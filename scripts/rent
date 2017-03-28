@@ -1,0 +1,8 @@
+CREATE TABLE rent(
+  emp_bannerID char(9) NOT NULL,
+    pName char(25) NOT NULL,
+      startDate DATE,
+        CONSTRAINT PRIMARY KEY (emp_bannerID, pName),
+          CONSTRAINT FOREIGN KEY (emp_bannerID) REFERENCES member(bannerID),
+            CONSTRAINT FOREIGN KEY (pName) REFERENCES project(name)
+);
