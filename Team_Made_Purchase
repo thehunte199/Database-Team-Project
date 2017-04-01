@@ -1,0 +1,9 @@
+CREATE TABLE team_made_purchase
+(
+    PurchasingTeamName varchar(25) NOT NULL,
+    PurchaseID int NOT NULL,
+
+    CONSTRAINT PRIMARY KEY (PurchasingTeamName, PurchaseID),
+    CONSTRAINT FOREIGN KEY (PurchasingTeamName) REFERENCES subteam(TeamName),
+    CONSTRAINT FOREIGN KEY (PurchaseID) REFERENCES purchase(ID)
+);
