@@ -1,0 +1,9 @@
+CREATE TABLE part_used
+(
+    ProjectName varchar(25) NOT NULL,
+    PartID int NOT NULL,
+
+    CONSTRAINT PRIMARY KEY (ProjectName, PartID),
+    CONSTRAINT FOREIGN KEY (ProjectName) REFERENCES project(Name),
+    CONSTRAINT FOREIGN KEY (PartID) REFERENCES part(ID)
+);
