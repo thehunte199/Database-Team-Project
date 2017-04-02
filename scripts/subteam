@@ -3,4 +3,4 @@ CREATE TABLE subteam(
         parentTeam varchar(26),
             description varchar(255),
     CONSTRAINT PRIMARY KEY (stname)
-)
+);
