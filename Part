@@ -1,0 +1,15 @@
+CREATE TABLE part 
+(
+    ID char(15) NOT NULL,
+    PartPurchaseID int,
+    PartDonationID int,
+    Name varchar(25),
+    Quantity int NOT NULL,
+    Category varchar(25),
+    Location varchar(25) NOT NULL,
+    Manufacturer varchar(25),
+
+    CONSTRAINT PRIMARY KEY (ID),
+    CONSTRAINT FOREIGN KEY (PartDonationID) REFERENCES donation(donationID),
+    CONSTRAINT FOREIGN KEY (PartPurchaseID) REFERENCES purchase(ID),
+);
