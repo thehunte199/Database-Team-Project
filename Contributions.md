@@ -3,7 +3,8 @@
 1. [GitHub Workflow](#github-workflow)
 2. [Testing](#testing)
 3. [Fixing Bugs](#fixing-bugs)
-4. [Useful Git Commands](#useful-git-commands)
+4. [Handling Merge Conflits](#handling-merge-conflicts)
+5. [Useful Git Commands](#useful-git-commands)
 
 ## GitHub Workflow
 
@@ -22,7 +23,7 @@ In addition to commenting the pull request, the contributor should also assign a
 |Richard|Brian|
 |James|Richard|
 
-Once the pull request has been reviewed and the reviewer gives the okay to merge, James will close the pull request and will delete the feature branch as he merges it into master.
+Once the pull request has been reviewed and the reviewer gives the okay to merge, James will close the pull request and will **delete** the feature branch as he merges it into master.
 
 ## Testing
 
@@ -34,7 +35,7 @@ If Richard finds that a feature has introduced bugs into the master branch, then
 
 ## Fixing Bugs
 
-All bugs should be fixed on their own feature branch, in which the name should be prefaced with "Bugfix-". The remainder of the branch name should briefly describe the bug being fixed, and can either be done through referencing the issue #, or through descriptive text.
+All bugs should be fixed on their own feature branch, in which the name should be prefaced with "bugfix-". The remainder of the branch name should briefly describe the bug being fixed, and can either be done through referencing the issue #, or through descriptive text.
 
 ## Handling Merge Conflicts
 
@@ -54,7 +55,15 @@ and your email:
 
 ### Cloning
 
-This will clone a remote repository onto your local machine. You can clone either through SSH or HTTTP, and the command for both is the same. The <URL> portion of the command will change depending on the cloning method. It's important to note that SSH cloning requires user authentication with the server, and requries extensive setup before hand. It's easier to clone with HTTP.
+This will clone a remote repository onto your local machine. You can clone either through SSH or HTTPS, and the command for both is the same. The <URL> portion of the command will change depending on the cloning method. It's important to note that SSH cloning requires user authentication with the server, and requries extensive setup before hand. It's easier to clone with HTTP.
+
+Cloning through HTTPS uses the following URL format:
+* `https://github.com/USERNAME/REPOSITORYNAME.git`
+
+Coning through SSH uses this format:
+* `git@github.com:USERNAME/REPOSITORYNAME.git`
+
+It's important to note that when cloning a private repository that isn't your own, you'll end up using the SSH URL. This is because the HTTPS version is used for public repositories, and the SSH is for private.
 
 `git clone <URL>`
 
