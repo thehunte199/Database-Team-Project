@@ -1,0 +1,21 @@
+CREATE TABLE purchase
+(
+	purchaseID int,
+	orderDate date,
+	arrivalStatus bit,
+	arrivalDate	date,
+	purchaseType varchar(25),
+	quantityRequired int,
+	quantityOrdered	int,
+	unitPrice double,
+	puchasePriority	int,
+	orderDescription varchar(50),
+	purchasedFrom varchar(50),
+	orderName varchar(25),
+	subteamName	varchar(25),
+	partNumber int,
+
+    CONSTRAINT PRIMARY KEY (purchaseID),
+    CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber),
+    CONSTRAINT FOREIGN KEY (subteamName) REFERENCES part(teamName)
+);
