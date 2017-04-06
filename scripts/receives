@@ -1,0 +1,8 @@
+CREATE TABLE receives(
+    subName varchar(50) NOT NULL,
+        donID int NOT NULL,
+            receiveDate date NOT NULL,
+    CONSTRAINT PRIMARY KEY (subName, donID),
+        CONSTRAINT FOREIGN KEY (subName) REFERENCES subteam(stname),
+            CONSTRAINT FOREIGN KEY (donID) REFERENCES donation(donationID)
+);
