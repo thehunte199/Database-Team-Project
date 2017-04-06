@@ -1,9 +1,9 @@
 CREATE TABLE donation (
   donationID int NOT NULL AUTO_INCREMENT,
-    dType varchar(20),
+    donationType varchar(25),
       receivedDate DATE,
         amount int,
-          donor varchar(40), 
+          donatedFrom varchar(50), 
             reason varchar(255),
               CONSTRAINT PRIMARY KEY (donationID)
 );
