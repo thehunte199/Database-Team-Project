@@ -1,9 +1,9 @@
 CREATE TABLE requires (
 	subteamName varchar(25) NOT NULL,
 	partNumber varchar(15) NOT NULL,
-	requiredDate date() NOT NULL,
+	acquireDate date() NOT NULL,
 
 	CONSTRAINT PRIMARY KEY (subteamName, partNumber),
-	CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(STname),
+	CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
 	CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
 );
