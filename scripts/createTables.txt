@@ -27,7 +27,7 @@ CREATE TABLE purchase
 	purchaseID int ,
 	orderDate DATE,
 	arrivalStatus bit,
-	arrivalDate	DATE,
+	arrivalDate DATE,
 	purchaseType varchar(25),
 	quantityRequired int,
 	quantityOrdered	int,
@@ -74,7 +74,7 @@ CREATE TABLE requires (
 	partNumber varchar(15) NOT NULL,
 	requiredDate DATE NOT NULL,
 	CONSTRAINT PRIMARY KEY (subteamName, partNumber),
-	CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(STname),
+	CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
 	CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
 +);
 
