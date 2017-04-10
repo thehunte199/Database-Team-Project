@@ -1,0 +1,136 @@
+SET FOREIGN_KEY_CHECKS = 0;
+CREATE TABLE member(
+   bannerID char(9) NOT NULL,
+   memName varchar(25),
+   memEmail varchar(50),
+   memPhoneNum char(10),
+   memCollege varchar(50),
+   memMajor varchar(30),
+   memClass varchar(8),
+   shirtSize varchar(3),
+   memberStatus bit,
+   CONSTRAINT PRIMARY KEY (bannerID)
+);
+
+[M"JBCREATE TABLE subteam(
+  teamName varchar(25) NOT NULL,
+  parentTeam varchar(25),
+  purpose varchar(255),
+[M#JB  joinDate DATE,
+  bannerID char(9),
+  leaderID char(9),
+  CONSTRAINT PRIMARY KEY (teamName),
+  CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
+  CONSTRAINT FOREIGN KEY (leaderID) REFERENCES member(bannerID)
+);
+
+CREATE TABLE project(
+   projectName varchar(25) NOT NULL,
+   assignDate DATE NOT NULL,
+   startDate DATE NOT NULL,
+   dueDate DATE NOT NULL,
+   completedDate DATE,
+   projDesc varchar(257) NOT NULL,
+   leaderID char(9),
+   subteamName varchar(25) NOT NULL,
+   CONSTRAINT PRIMARY KEY (projectName),
+   projPriority int(10) NOT NULL CHECK (projPriority <= 10 AND projPriority > 0),
+   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
+   CONSTRAINT FOREIGN KEY (leaderID) REFERENCES member(bannerID)
+);
+
+CREATE TABLE donation(
+  donationID int NOT NULL AUTO_INCREMENT,
+  dType varchar(20),
+  receivedDate DATE,
+  amount int,
+  donor varchar(40),
+  reason varchar(255),
+  CONSTRAINT PRIMARY KEY (donationID)
+);
+
+CREATE TABLE part(
+    partNumber varchar(15) NOT NULL,
+    partName varchar(25),
+    donationID int,
+    quantity int NOT NULL,
+    category varchar(25),
+    partLocation varchar(25) NOT NULL,
+    partManufacturer varchar(25),
+
+    CONSTRAINT PRIMARY KEY (partNumber),
+    CONSTRAINT FOREIGN KEY (donationID) REFERENCES donation(donationID)
+);
+
+CREATE TABLE purchase(
+   purchaseID int NOT NULL,
+   orderDate DATE,
+   arrivalStatus bit,
+   arrivalDate DATE,
+   purchaseType varchar(25),
+   quantityRequired int,
+   quantityOrdered int,
+   unitPrice int,
+   purchasePriority int CHECK (purchasePriority > 0 AND purchasePriority < 11),
+   orderDescription varchar(50),
+   purchasedFrom varchar(50),
+   orderName varchar(25),
+   subteamName varchar(25),
+   partNumber int,
+
+   CONSTRAINT PRIMARY KEY (purchaseID),
+   CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber),
+   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName)
+);
+
+CREATE TABLE requires(
+   subteamName varchar(25) NOT NULL,
+   partNumber varchar(15) NOT NULL,
+   requiredDate DATE NOT NULL,
+   CONSTRAINT PRIMARY KEY (subteamName, partNumber),
+   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
+   CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
+);
+
+CREATE TABLE working_on (
+   bannerID char(9),
+   PName varchar(25),
+   startDate DATE,
+   CONSTRAINT PRIMARY KEY (bannerID, PName),
+   CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
+   CONSTRAINT FOREIGN KEY (PName) REFERENCES project(projectName)
+
+);
+
+
+
+CREATE TABLE receives(
+    subteamName varchar(25) NOT NULL,
+        donationID int NOT NULL,
+            receiveDate DATE,
+     CONSTRAINT PRIMARY KEY (subteamName, donationID),
+        CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
+            CONSTRAINT FOREIGN KEY (donationID) REFERENCES donation(donationID)
+);
+
+CREATE TABLE uses
+(
+    projectName varchar(25) NOT NULL,
+    partNumber varchar(15) NOT NULL,
+    dateUsed DATE,
+
+    CONSTRAINT PRIMARY KEY (projectName, partNumber),
+    CONSTRAINT FOREIGN KEY (projectName) REFERENCES project(projectName),
+    CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
+);
+
+CREATE TABLE rent(
+  bannerID char(9) NOT NULL,
+    partNumber int NOT NULL,
+      rentDate DATE,
+        CONSTRAINT PRIMARY KEY (bannerID, partNumber),
+          CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
+            CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
+);
+
+SET FOREIGN_KEY_CHECKS = 1;
