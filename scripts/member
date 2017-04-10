@@ -1,0 +1,14 @@
+CREATE TABLE member(
+   bannerID char(9) NOT NULL,
+   memFName varchar(25),
+   memMInitial char(1),
+   memLName varchar(25),
+   memEmail varchar(50),
+   memPhoneNum char(10),
+   memCollege varchar(50),
+   memMajor varchar(30),
+   memClass varchar(8),
+   shirtSize varchar(3),
+   memberStatus bit,
+   CONSTRAINT PRIMARY KEY (bannerID)
+);
