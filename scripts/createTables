@@ -50,7 +50,7 @@ CREATE TABLE donation(
 );
 
 CREATE TABLE part(
-    partNumber varchar(15) NOT NULL,
+    partNumber int NOT NULL CHECK (partNumber > 0 AND partNumber < 10001),
     partName varchar(25),
     donationID int,
     quantity int NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE purchase(
 
 CREATE TABLE requires(
    subteamName varchar(25) NOT NULL,
-   partNumber varchar(15) NOT NULL,
+   partNumber int NOT NULL,
    requiredDate DATE NOT NULL,
    CONSTRAINT PRIMARY KEY (subteamName, partNumber),
    CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
@@ -116,7 +116,7 @@ CREATE TABLE receives(
 CREATE TABLE uses
 (
     projectName varchar(25) NOT NULL,
-    partNumber varchar(15) NOT NULL,
+    partNumber int NOT NULL,
     dateUsed DATE,
 
     CONSTRAINT PRIMARY KEY (projectName, partNumber),
