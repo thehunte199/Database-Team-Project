@@ -28,5 +28,6 @@
 
 04/24 - Finalize everything and prepare presentation
 
-04/28 - Project Due
+04/28 - Project Final Phase Due
 
+05/01 - Presentations
