@@ -1,0 +1,8 @@
+CREATE TABLE rent(
+  bannerID char(9) NOT NULL,
+    partNumber int NOT NULL AUTO_INCREMENT,
+      rentDate date,
+        CONSTRAINT PRIMARY KEY (bannerID, partNumber),
+          CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
+            CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
+);
