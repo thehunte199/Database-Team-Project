@@ -12,11 +12,11 @@ CREATE TABLE member(
    CONSTRAINT PRIMARY KEY (bannerID)
 );
 
-[M"JBCREATE TABLE subteam(
+CREATE TABLE subteam(
   teamName varchar(25) NOT NULL,
   parentTeam varchar(25),
   purpose varchar(255),
-[M#JB  joinDate DATE,
+  joinDate DATE,
   bannerID char(9),
   leaderID char(9),
   CONSTRAINT PRIMARY KEY (teamName),
