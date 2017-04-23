@@ -9,4 +9,9 @@ SELECT part.partNumber, part.partName, part.partLocation, count(part.partNumber)
           uses.projectName = "<SPECIFIED NAME>"
     ORDER BY uses.dateUsed
     GROUP BY part.partNumber;
-    
+
+/* Returns the number of members working on the specified project */
+SELECT COUNT(*)
+    FROM member, working_on
+    WHERE member.bannerID = working_on.bannerID AND
+          projectName = "<SPECIFIED NAME>";
