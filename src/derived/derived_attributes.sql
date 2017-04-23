@@ -33,3 +33,9 @@ SELECT SUM(unitPrice * quantityOrdered)
 /* Finds the number of projects being worked on. */
 SELECT COUNT(*)
     FROM project;
+
+/* Finds the number of members on a subteam */
+SELECT COUNT(*)
+    FROM member, subteam
+    WHERE member.bannerID = working_on.bannerID AND
+          teamName = "<SPECIFIED NAME>";
