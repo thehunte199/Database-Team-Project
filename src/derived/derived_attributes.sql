@@ -15,3 +15,8 @@ SELECT COUNT(*)
     FROM member, working_on
     WHERE member.bannerID = working_on.bannerID AND
           projectName = "<SPECIFIED NAME>";
+
+/* Finds the owning subteam */
+SELECT subteamName
+    FROM project;
+
