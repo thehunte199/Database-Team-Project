@@ -18,5 +18,5 @@ SELECT COUNT(*)
 
 /* Finds the owning subteam */
 SELECT subteamName
-    FROM project;
-
+    FROM project
+    WHERE projectName = "<SPECIFIED NAME>";
