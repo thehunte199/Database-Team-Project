@@ -20,3 +20,8 @@ SELECT COUNT(*)
 SELECT subteamName
     FROM project
     WHERE projectName = "<SPECIFIED NAME>";
+
+/* Finds the unit price of a part based on its number */
+SELECT unitPrice
+    FROM part
+    WHERE partNumber = "<SPECIFIED NUMBER>";
