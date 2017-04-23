@@ -25,3 +25,7 @@ SELECT subteamName
 SELECT unitPrice
     FROM part
     WHERE partNumber = "<SPECIFIED NUMBER>";
+
+/* Finds the total cost of all parts purchased */
+SELECT SUM(unitPrice * quantityOrdered)
+    FROM purchase;
