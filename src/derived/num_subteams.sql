@@ -1,0 +1,3 @@
+SELECT COUNT(*) FROM subteams;
+
+SELECT * FROM part WHERE
