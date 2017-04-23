@@ -29,3 +29,7 @@ SELECT unitPrice
 /* Finds the total cost of all parts purchased */
 SELECT SUM(unitPrice * quantityOrdered)
     FROM purchase;
+
+/* Finds the number of projects being worked on. */
+SELECT COUNT(*)
+    FROM project;
