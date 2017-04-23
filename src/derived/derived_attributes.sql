@@ -3,7 +3,7 @@ SELECT COUNT(*)
     FROM subteams;
 
 /* Returns all of the parts used by a project and groups multiples of the same part w/ their count*/
-SELECT part.partNumber, part.partName, part.partLocation, count(part.partNumber), uses.dateUsed
+SELECT part.*, count(part.partNumber), uses.dateUsed
     FROM part, uses
     WHERE part.partNumber = uses.partNumber AND
           uses.projectName = "<SPECIFIED NAME>"
@@ -44,3 +44,9 @@ SELECT COUNT(*)
 /* Finds the total cost of all parts purchased */
 SELECT SUM(unitPrice * quantityOrdered)
     FROM purchase;
+
+/* Finds the member that's leading a specific subteam */
+SELECT member.*
+    FROM member, subteam
+    WHERE bannarID = leaderID AND
+          teamName = "<SPECIFIED NAME>";
