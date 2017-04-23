@@ -48,5 +48,11 @@ SELECT SUM(unitPrice * quantityOrdered)
 /* Finds the member that's leading a specific subteam */
 SELECT member.*
     FROM member, subteam
-    WHERE bannarID = leaderID AND
+    WHERE bannerID = leaderID AND
           teamName = "<SPECIFIED NAME>";
+
+/* Finds the member that's leading a specific subteam */
+SELECT member.*
+    FROM member, project
+    WHERE bannerID = leaderID AND
+          projectName = "<SPECIFIED NAME>";
