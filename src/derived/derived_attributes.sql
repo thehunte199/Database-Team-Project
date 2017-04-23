@@ -26,9 +26,10 @@ SELECT unitPrice
     FROM part
     WHERE partNumber = "<SPECIFIED NUMBER>";
 
-/* Finds the total cost of all parts purchased */
+/* Finds the total cost of a specific part */
 SELECT SUM(unitPrice * quantityOrdered)
-    FROM purchase;
+    FROM purchase
+    WHERE partNumber = "<PARTNUMBER>";
 
 /* Finds the number of projects being worked on. */
 SELECT COUNT(*)
@@ -39,3 +40,7 @@ SELECT COUNT(*)
     FROM member, subteam
     WHERE member.bannerID = working_on.bannerID AND
           teamName = "<SPECIFIED NAME>";
+
+/* Finds the total cost of all parts purchased */
+SELECT SUM(unitPrice * quantityOrdered)
+    FROM purchase;
