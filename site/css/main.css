@@ -20,17 +20,20 @@ header {
     font: bold 24pt Arial;
 }
 
+header img {
+    width: 300px;
+    height: 150px;
+}
+
 footer {
-    background-color: black;
     position: absolute;
-    color: lightgray;
+    color: black;
     text-align: center;
-    font-size: 14pt;
-    height: 25px;
+    font-size: 11pt;
+    height: 30px;
     width: 100%;
     bottom: 0;
     padding-top: .1em;
-    padding-bottom: .1em;
 }
 
 nav {
@@ -50,6 +53,7 @@ nav ul a button{
     padding: 10px;
     margin: 5px;
 }
+
 article {
     padding: .5em;
     margin-left: 200px;
