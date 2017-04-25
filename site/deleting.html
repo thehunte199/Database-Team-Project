@@ -1,8 +1,14 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0    ">
+        <link rel="stylesheet" href="css/page.css">
+    </head>
 <html>
 <body>
 
-<h1>Deleting</h1><br>
-<form action="deletion.php" method="post">
+<form id="deleteForm" action="deletion.php" method="post" target>
     <p>Choose a table: 
     <select name='table' onchange="tableSelected(this)">
         <option name="table" id="selection" value="member">Member</option>
@@ -10,18 +16,9 @@
         <option name="table" id="selection" value="part">Part</option>
         <option name="table" id="selection" value="project">Project</option>
         <option name="table" id="selection" value="purchase">Purchase</option>
-        <option name="table" id="selection" value="receives">Receives</option>
-        <option name="table" id="selection" value="rent">Rent</option>
-        <option name="table" id="selection" value="requires">Requires</option>
         <option name="table" id="selection" value="subteam">Subteam</option>
-        <option name="table" id="selection" value="uses">Uses</option>
-        <option name="table" id="selection" value="working_on">Working On</option>
     </select> </p>
     <p>Where
-
-       <!--  <select name='dkey'>
-            <option id="dkey" value="bannerID">bannerID</option>
-        </select> -->
 
         <input type="text" id='dkey' name='dkey' value="bannerID"/>
 
@@ -36,8 +33,9 @@
     <input type="text" name="condition" id="cond"/>
     </p>
 
-    <input type="submit" />
+    <input type="submit" formtarget="viewIframe" value="Delete"/>
 </form>
+<!-- THIS BREAKS MY CODE <iframe src="" name="viewIframe"/> -->
 
 </body>
 </html>
