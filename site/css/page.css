@@ -1,5 +1,5 @@
 main {
-    font: 14px "Trebuchet MS";
+    font: 14px "Arial";
 }
 
 table td{
@@ -14,12 +14,22 @@ select {
 
 input {
     padding: 5px;
+}
+
+input[type=date], [type=email], [type=tel], [type=number], [type=text] {
+    width: 125px;
+}
+
+input[type=submit]{
     width: 100px;
 }
 
+input[type=radio] {
+    text-align: center;
+}
 input[type="submit"] { 
-    float: right;
-    margin-top: 1em;
+    float: left;
+    margin-top: .5em;
 }
 
 fieldset {
@@ -39,4 +49,41 @@ iframe {
     display: block;
     overflow: hidden;
     border: none;
+}
+
+div.tab {
+    overflow: hidden;
+    border: 1px solid black;
+    background-color: #333;
+    border-radius: 4px;
+}
+
+div.tab button {
+    background-color: inherit;
+    color: #eee;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 20px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+div.tab button:hover {
+    background-color: #444;
+}
+
+div.tab button.active {
+    background-color: #444;
+}
+
+.tabcontent {
+    position: relative;
+    display: none;
+    background-color: #eee; 
+    padding: 6px 12px;
+    border: 1px solid gray;
+    border-top: none;
+    height: 151px;
 }
