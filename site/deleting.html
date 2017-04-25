@@ -7,34 +7,49 @@
     </head>
 <body>
 
-<form id="deleteForm" action="deletion.php" method="post">
-    <p>Choose a table: 
-    <select name='table' onchange="tableSelected(this)">
-        <option name="table" id="selection" value="member">Member</option>
-        <option name="table" id="selection" value="donation">Donation</option>
-        <option name="table" id="selection" value="part">Part</option>
-        <option name="table" id="selection" value="project">Project</option>
-        <option name="table" id="selection" value="purchase">Purchase</option>
-        <option name="table" id="selection" value="subteam">Subteam</option>
-    </select> </p>
-    <p>Where
-
-        <input type="text" id='dkey' name='dkey' value="bannerID"/>
-
-    <select name="compOperator" id="op" selected="=">
-        <option value="=">=</option>
-        <option value="!=">!=</option>
-        <option value="<"><</option>
-        <option value=">">></option>
-        <option value="<="><=</option>
-        <option value=">=">>=</option>
-    </select>
-    <input type="text" name="condition" id="cond"/>
-    </p>
-
-    <input type="submit" formtarget="viewIframe" value="Delete" />
+  <main>
+      <form id="deleteForm" action="deletion.php" method="post">
+      <fieldset><legend>Delete</legend>
+  <table>
+    <tr>
+      <td>Choose a table:</td>
+      <td>
+        <select name='table' onchange="tableSelected(this)">
+            <option name="table" id="selection" value="member">Member</option>
+            <option name="table" id="selection" value="donation">Donation</option>
+            <option name="table" id="selection" value="part">Part</option>
+            <option name="table" id="selection" value="project">Project</option>
+            <option name="table" id="selection" value="purchase">Purchase</option>
+            <option name="table" id="selection" value="subteam">Subteam</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Where:</td>
+      <td>
+          <input type="text" id='dkey' name='dkey' value="bannerID"/>
+      </td>
+      <td>
+        <select name="compOperator" id="op" selected="=">
+            <option value="=">=</option>
+            <option value="!=">!=</option>
+            <option value="<"><</option>
+            <option value=">">></option>
+            <option value="<="><=</option>
+            <option value=">=">>=</option>
+        </select>
+      </td>
+      <td><input type="text" name="condition" id="cond"/></td>
+    </tr>
+    <tr>
+      <td><input type="submit" formtarget="viewIframe" value="Delete" /></td>
+    </tr>
+  </table>
+</fieldset>
 </form>
+
 	<!-- For some reason this won't work <iframe src="" name="viewIframe"/> -->
+</main>
 </body>
 </html>
 
