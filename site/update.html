@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/page.css">
+    </head>
+<body>
+    <main>
+        <form id="updateForm" action="update.php" method="POST">
+        <fieldset><legend>Update</legend>
+    <table>
+        <tr>
+            <td>Table:</td>
+            <td>
+                <select name="tableDropdown" selected="">
+                    <option value=""/>
+                    <option value="Donation">Donation</option>
+                    <option value="Member">Member</option>
+                    <option value="Project">Project</option>
+                    <option value="Part">Part</option>
+                    <option value="Purchase">Purchase</option>
+                    <option value="Subteam">Subteam</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+        <td>Set:</td>
+            <td>
+                <select name="attributeDropdownSet" selected="">
+                    <option value=""/>
+                </select>
+            </td>
+            <td><section>to</section></td>
+            <td>
+                <input type="text" name="updateValue"/>
+            <td>
+        </tr>
+        <tr>
+            <td>Where:</td>
+            <td>
+                <select name="attributeDropdownWhere" selected="">
+                    <option value=""/>
+                </select>
+            </td>
+            <td>
+                <select name="compOperator" selected="=">
+                    <option value="=">=</option>
+                    <option value="!=">!=</option>
+                    <option value="<"><</option>
+                    <option value=">">></option>
+                    <option value="<="><=</option>
+                    <option value=">=">>=</option>
+                </select>
+            </td>
+            <td><input type="text" name="condition"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" formtarget="viewIframe" value="Update"/></td>
+        </tr>
+    </table>
+    </fieldset>
+    </form>
+    <iframe src="" name="viewIframe"/>
+    </main>
+</body>
+</html>
+
