@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IFrame php form example</title>
+
+<script>
+    window.onload = function()
+    {
+        var select = document.createElement("select");
+        select.setAttribute("name", "attribute");
+        document.getElementById("formTable").rows[1].cells[1].appendChild(select);
+    };
+
+    var donation = ["donationID", "donationType", "receivedDate", "amount", "donatedFrom", "reason"];
+
+    var member = ["bannerID", "memFName", "memMName", "memLName", "memPhoneNum", "memCollege", "memMajor","memClass", "shirtSize", "memberStatus"];
+
+    var purchase = ["purchaseID", "orderDate", "arrivalStatus", "arrivalDate", "purchaseType", "quantityRequired", "quantityOrdered", "unitPrice", "puchasePriority", "orderDescription", "purchasedFrom", "orderName", "subteamName", "partNumber"];
+
+    var subteam = ["teamName", "parentTeam", "purpose", "joinDate", "bannerID", "leaderID"];
+
+    var project = ["projectName", "startDate", "dueDate", "completedDate", "projDesc", "projPriority", "subteamName", "assignDate", "leaderID",];
+
+    var part =["partNumber", "partName", "quantity", "category", "partLocation", "partManufacturer", "donationID"];
+
+    var working_on = ["bannerID", "projectName", "startDate"]
+    var rent = ["bannerID", "partNumber", "rentDate"]
+    var uses = ["projectName", "partNumber", "dateUsed"]
+    var requires = ["subteamName", "partNumber", "acquireDate"]
+    var receives = ["subteamName", "donationID", "receiveDate"]
+
+    setAttributes = function(entity)
+    {
+        var select = document.createElement("select");
+        select.setAttribute("name", "attribute");
+
+        var table = document.getElementById("formTable");
+        table.rows[1].deleteCell(1);
+        table.rows[1].insertCell(1);
+        table.rows[1].cells[1].appendChild(select);
+
+        for(i = 0; i < select.length; ++i)
+            select.remove(i);
+
+        var tableType;
+
+        switch(entity.value)
+        {
+            case "member": tableType = member; break;
+            case "purchase": tableType = purchase; break;
+            case "donation": tableType = donation; break;
+            case "subteam": tableType = subteam; break;
+            case "project": tableType = project; break;
+            case "part": tableType = part; break;
+            case "rent": tableType = rent; break;
+            case "working_on": tableType = working_on; break;
+            case "uses": tableType = uses; break;
+            case "requires": tableType = requires; break;
+            case "receives": tableType = receives; break;
+        }
+
+        for(i = 0; i < tableType.length; i++)
+        {
+            var option = document.createElement("option");
+            option.setAttribute('value', tableType[i]);
+            option.appendChild(document.createTextNode(tableType[i]));
+            select.add(option);
+        }
+    }
+</script>
+
+    </head>
+<body>
+<form id="testForm" action="test-2.php" method="POST">
+<table id = "formTable">
+    <tr>
+        <td>Enter a table:</td>
+        <td>
+            <select name="entity" onchange="setAttributes(this, 'attribute')" selected="member">
+                <option value="member">Member</option>
+                <option value="purchase">Purchase</option>
+                <option value="donation">Donation</option>
+                <option value="subteam">Subteam</option>
+                <option value="project">Project</option>
+                <option value="part">Part</option>
+                <option value="rent">Rent</option>
+                <option value="working_on">Working On</option>
+                <option value="uses">Uses</option>
+                <option value="requires">Requires</option>
+                <option value="receives">Receives</option>
+            </select> 
+        </td>
+    </tr>
+    <tr>
+        <td>Ordery by: </td>
+        <td>
+        </td>
+        <td>
+            <select name="OrderBy" selected="asc">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+        </td>
+    <tr><td><input type="submit" formtarget="iframe" value="submit"></td></tr>
+</table>
+
+</form>
+<br>
+
+<iframe src="" name="iframe" width = "1024px" height="512px"/>
+
+</body>  
+</html>
