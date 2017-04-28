@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="response.css"> 
+    </head>
+<body>
+<table>
 <?php
 include("../access.txt");
 mysql_select_db("DBS17T-9",$mydb);
@@ -14,7 +23,7 @@ if (!mysql_query($sql,$mydb))
  die('Error: ' . mysql_error());
  }
 
-$result = @mysql_query("SELECT * FROM ".$_POST["table"], $mydb);
+$result = @mysql_query("SELECT * FROM ".$_POST[table], $mydb);
  
      if ($result)
      {
@@ -42,3 +51,6 @@ $result = @mysql_query("SELECT * FROM ".$_POST["table"], $mydb);
 
 mysql_close($mydb);
 ?> 
+</table>
+</body>
+</html>
