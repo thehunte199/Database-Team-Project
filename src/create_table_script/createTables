@@ -1,0 +1,145 @@
+SET FOREIGN_KEY_CHECKS = 0;
+CREATE TABLE member(
+   memFName varchar(25),
+   bannerID char(9) NOT NULL,
+   memCollege varchar(50),
+   shirtSize varchar(3),
+   memMName varchar(25),
+   memEmail varchar(50),
+   memMajor varchar(30),
+   memberStatus bit,
+   memLName varchar(25),
+   memPhoneNum char(10),
+   memClass varchar(8),
+   CONSTRAINT PRIMARY KEY (bannerID)
+);
+
+CREATE TABLE subteam(
+  teamName varchar(25) NOT NULL,
+  parentTeam varchar(25),
+  purpose varchar(255),
+  leaderID char(9),
+  CONSTRAINT PRIMARY KEY (teamName),
+  CONSTRAINT FOREIGN KEY (leaderID) REFERENCES member(bannerID) ON DELETE SET NULL
+);
+
+CREATE TABLE project(
+   projectName varchar(25) NOT NULL,
+   completedDate DATE,
+   subteamName varchar(25),
+   startDate DATE,
+   projDesc varchar(255) NOT NULL,
+   assignDate DATE NOT NULL,
+   dueDate DATE NOT NULL,
+   projPriority int(10) NOT NULL CHECK (projPriority <=10 AND projPriority > 0),
+   leaderID char(9),
+
+   CONSTRAINT PRIMARY KEY (projectName),
+   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName) ON DELETE SET NULL,
+   CONSTRAINT FOREIGN KEY (leaderID) REFERENCES member(bannerID) ON DELETE SET NULL,
+);
+
+CREATE TABLE donation(
+  donationID int NOT NULL AUTO_INCREMENT,
+  amount int,
+  donationType varchar(20),
+  donatedFrom varchar(40),
+  receivedDate DATE,
+  reason varchar(255),
+  CONSTRAINT PRIMARY KEY (donationID)
+);
+
+CREATE TABLE part(
+    partNumber int NOT NULL CHECK (partNumber > -1 AND partNumber < 10001),
+    category varchar(25),
+    donationID int,
+    partName varchar(25),
+    partLocation varchar(25) NOT NULL,
+    quantity int NOT NULL,
+    partManufacturer varchar(25),
+
+    CONSTRAINT PRIMARY KEY (partNumber),
+    CONSTRAINT FOREIGN KEY (donationID) REFERENCES donation(donationID) ON DELETE SET NULL
+);
+
+CREATE TABLE purchase(
+   purchaseID int NOT NULL,
+   arrivalDate DATE,
+   quantityOrdered int,
+   orderDescription varchar(50),
+   subteamName varchar(25) NOT NULL,
+   orderDate DATE,
+   purchaseType varchar(25),
+   unitPrice int,
+   purchasedFrom varchar(50),
+   partNumber int NOT NULL,
+   arrivalStatus bit,
+   quantityRequested int,
+   purchasePriority int CHECK (purchasePriority > 0 AND purchasePriority < 11),
+   orderName varchar(25),
+
+   CONSTRAINT PRIMARY KEY (purchaseID),
+   CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber) ON DELETE SET NULL,
+   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName) ON DELETE SET NULL
+);
+
+CREATE TABLE requires(
+   subteamName varchar(25) NOT NULL,
+   partNumber int NOT NULL,
+   acquireDate DATE,
+   CONSTRAINT PRIMARY KEY (subteamName, partNumber),
+   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName) ON DELETE CASCADE,
+   CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber) ON DELETE SET NULL
+);
+
+CREATE TABLE working_on (
+   bannerID char(9),
+   projectName varchar(25),
+   startDate DATE,
+   CONSTRAINT PRIMARY KEY (bannerID, projectName),
+   CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID) ON DELETE SET NULL,
+   CONSTRAINT FOREIGN KEY (projectName) REFERENCES project(projectName) ON DELETE CASCADE
+
+);
+
+
+
+CREATE TABLE receives(
+    subteamName varchar(25) NOT NULL,
+        donationID int NOT NULL,
+            receiveDate DATE,
+     CONSTRAINT PRIMARY KEY (subteamName, donationID),
+        CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName) ON DELETE SET NULL,
+            CONSTRAINT FOREIGN KEY (donationID) REFERENCES donation(donationID) ON DELETE CASCADE
+);
+
+CREATE TABLE uses
+(
+    projectName varchar(25) NOT NULL,
+    partNumber int NOT NULL,
+    dateUsed DATE,
+
+    CONSTRAINT PRIMARY KEY (projectName, partNumber),
+    CONSTRAINT FOREIGN KEY (projectName) REFERENCES project(projectName) ON DELETE SET NULL,
+    CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber) ON DELETE CASCADE
+);
+
+CREATE TABLE rent(
+  bannerID char(9) NOT NULL,
+    partNumber int NOT NULL,
+      rentDate DATE,
+        CONSTRAINT PRIMARY KEY (bannerID, partNumber),
+          CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID) ON DELETE SET NULL,
+            CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber) ON DELETE CASCADE
+);
+
+CREATE TABLE membership(
+bannerID char(9) NOT NULL,
+subteamName varchar(25) NOT NULL,
+joinDate DATE,
+CONSTRAINT PRIMARY KEY (bannerID, subteamName),
+CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID) ON DELETE CASCADE,
+CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName) ON DELETE SET NULL
+);
+
+SET FOREIGN_KEY_CHECKS = 1;
