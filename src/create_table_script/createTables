@@ -18,15 +18,15 @@ CREATE TABLE subteam(
   teamName varchar(25) NOT NULL,
   parentTeam varchar(25),
   purpose varchar(255),
-  leaderID char(9) NOT NULL,
+  leaderID char(9),
   CONSTRAINT PRIMARY KEY (teamName),
-  CONSTRAINT FOREIGN KEY (leaderID) REFERENCES member(bannerID)
+  CONSTRAINT FOREIGN KEY (leaderID) REFERENCES member(bannerID) ON DELETE SET NULL
 );
 
 CREATE TABLE project(
    projectName varchar(25) NOT NULL,
    completedDate DATE,
-   subteamName varchar(25) NOT NULL,
+   subteamName varchar(25),
    startDate DATE,
    projDesc varchar(255) NOT NULL,
    assignDate DATE NOT NULL,
@@ -35,8 +35,8 @@ CREATE TABLE project(
    leaderID char(9),
 
    CONSTRAINT PRIMARY KEY (projectName),
-   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
-   CONSTRAINT FOREIGN KEY (leaderID) REFERENCES member(bannerID)
+   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName) ON DELETE SET NULL,
+   CONSTRAINT FOREIGN KEY (leaderID) REFERENCES member(bannerID) ON DELETE SET NULL,
 );
 
 CREATE TABLE donation(
@@ -59,7 +59,7 @@ CREATE TABLE part(
     partManufacturer varchar(25),
 
     CONSTRAINT PRIMARY KEY (partNumber),
-    CONSTRAINT FOREIGN KEY (donationID) REFERENCES donation(donationID)
+    CONSTRAINT FOREIGN KEY (donationID) REFERENCES donation(donationID) ON DELETE SET NULL
 );
 
 CREATE TABLE purchase(
@@ -79,8 +79,8 @@ CREATE TABLE purchase(
    orderName varchar(25),
 
    CONSTRAINT PRIMARY KEY (purchaseID),
-   CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber),
-   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName)
+   CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber) ON DELETE SET NULL,
+   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName) ON DELETE SET NULL
 );
 
 CREATE TABLE requires(
@@ -88,8 +88,8 @@ CREATE TABLE requires(
    partNumber int NOT NULL,
    acquireDate DATE,
    CONSTRAINT PRIMARY KEY (subteamName, partNumber),
-   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
-   CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
+   CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName) ON DELETE CASCADE,
+   CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber) ON DELETE SET NULL
 );
 
 CREATE TABLE working_on (
@@ -97,8 +97,8 @@ CREATE TABLE working_on (
    projectName varchar(25),
    startDate DATE,
    CONSTRAINT PRIMARY KEY (bannerID, projectName),
-   CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
-   CONSTRAINT FOREIGN KEY (projectName) REFERENCES project(projectName)
+   CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID) ON DELETE SET NULL,
+   CONSTRAINT FOREIGN KEY (projectName) REFERENCES project(projectName) ON DELETE CASCADE
 
 );
 
@@ -109,8 +109,8 @@ CREATE TABLE receives(
         donationID int NOT NULL,
             receiveDate DATE,
      CONSTRAINT PRIMARY KEY (subteamName, donationID),
-        CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
-            CONSTRAINT FOREIGN KEY (donationID) REFERENCES donation(donationID)
+        CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName) ON DELETE SET NULL,
+            CONSTRAINT FOREIGN KEY (donationID) REFERENCES donation(donationID) ON DELETE CASCADE
 );
 
 CREATE TABLE uses
@@ -120,8 +120,8 @@ CREATE TABLE uses
     dateUsed DATE,
 
     CONSTRAINT PRIMARY KEY (projectName, partNumber),
-    CONSTRAINT FOREIGN KEY (projectName) REFERENCES project(projectName),
-    CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
+    CONSTRAINT FOREIGN KEY (projectName) REFERENCES project(projectName) ON DELETE SET NULL,
+    CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber) ON DELETE CASCADE
 );
 
 CREATE TABLE rent(
@@ -129,8 +129,8 @@ CREATE TABLE rent(
     partNumber int NOT NULL,
       rentDate DATE,
         CONSTRAINT PRIMARY KEY (bannerID, partNumber),
-          CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
-            CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
+          CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID) ON DELETE SET NULL,
+            CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber) ON DELETE CASCADE
 );
 
 CREATE TABLE membership(
@@ -138,8 +138,8 @@ bannerID char(9) NOT NULL,
 subteamName varchar(25) NOT NULL,
 joinDate DATE,
 CONSTRAINT PRIMARY KEY (bannerID, subteamName),
-CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
-CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName)
+CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID) ON DELETE CASCADE,
+CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName) ON DELETE SET NULL
 );
 
 SET FOREIGN_KEY_CHECKS = 1;
