@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="response.css"> 
+        <link rel="stylesheet" href="css/response.css"> 
     </head>
 <body>
 <table>
@@ -36,7 +36,7 @@ VALUES
     }
     else
     {
-        die("Invalid query... some other text should go here: " . mysql_error());
+        die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
     }
     mysql_free_result($result);
 ?>
