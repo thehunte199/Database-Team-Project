@@ -99,9 +99,9 @@ CREATE TABLE working_on (
    bannerID char(9),
    projectName varchar(25),
    startDate DATE,
-   CONSTRAINT PRIMARY KEY (bannerID, PName),
+   CONSTRAINT PRIMARY KEY (bannerID, projectName),
    CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
-   CONSTRAINT FOREIGN KEY (PName) REFERENCES project(projectName)
+   CONSTRAINT FOREIGN KEY (projectName) REFERENCES project(projectName)
 
 );
 
