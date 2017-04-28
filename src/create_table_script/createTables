@@ -18,7 +18,7 @@ CREATE TABLE subteam(
   teamName varchar(25) NOT NULL,
   parentTeam varchar(25),
   purpose varchar(255),
-  leaderID char(9),
+  leaderID char(9) NOT NULL,
   CONSTRAINT PRIMARY KEY (teamName),
   CONSTRAINT FOREIGN KEY (leaderID) REFERENCES member(bannerID)
 );
