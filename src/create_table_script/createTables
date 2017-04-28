@@ -89,7 +89,7 @@ CREATE TABLE purchase(
 CREATE TABLE requires(
    subteamName varchar(25) NOT NULL,
    partNumber int NOT NULL,
-   acquireDate DATE NOT NULL,
+   acquireDate DATE,
    CONSTRAINT PRIMARY KEY (subteamName, partNumber),
    CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
    CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
