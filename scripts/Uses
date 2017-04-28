@@ -1,0 +1,10 @@
+CREATE TABLE uses
+(
+    projectName varchar(25) NOT NULL,
+    partNumber varchar(15) NOT NULL,
+    dateUsed date,
+
+    CONSTRAINT PRIMARY KEY (projectName, partNumber),
+    CONSTRAINT FOREIGN KEY (projectName) REFERENCES project(projectName),
+    CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
+);
