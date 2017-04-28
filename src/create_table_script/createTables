@@ -1,23 +1,25 @@
 SET FOREIGN_KEY_CHECKS = 0;
 CREATE TABLE member(
+   memFName varchar(25),
    bannerID char(9) NOT NULL,
-   memName varchar(25),
-   memEmail varchar(50),
-   memPhoneNum char(10),
    memCollege varchar(50),
-   memMajor varchar(30),
-   memClass varchar(8),
    shirtSize varchar(3),
+   memMName varchar(25),
+   memEmail varchar(50),
+   memMajor varchar(30),
    memberStatus bit,
+   memLName varchar(25),
+   memPhoneNum char(10),
+   memClass varchar(8),
    CONSTRAINT PRIMARY KEY (bannerID)
 );
 
 CREATE TABLE subteam(
   teamName varchar(25) NOT NULL,
-  parentTeam varchar(25),
-  purpose varchar(255),
   joinDate DATE,
+  parentTeam varchar(25),
   bannerID char(9),
+  purpose varchar(255),
   leaderID char(9),
   CONSTRAINT PRIMARY KEY (teamName),
   CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
@@ -26,36 +28,37 @@ CREATE TABLE subteam(
 
 CREATE TABLE project(
    projectName varchar(25) NOT NULL,
-   assignDate DATE NOT NULL,
-   startDate DATE NOT NULL,
-   dueDate DATE NOT NULL,
    completedDate DATE,
-   projDesc varchar(257) NOT NULL,
-   leaderID char(9),
    subteamName varchar(25) NOT NULL,
+   startDate DATE NOT NULL,
+   projDesc varchar(257) NOT NULL,
+   assignDate DATE NOT NULL,
+   dueDate DATE NOT NULL,
+   projPriority int(10) NOT NULL CHECK (projPriority <=10 AND projPriority > 0),
+   leaderID char(9),
+
    CONSTRAINT PRIMARY KEY (projectName),
-   projPriority int(10) NOT NULL CHECK (projPriority <= 10 AND projPriority > 0),
    CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
    CONSTRAINT FOREIGN KEY (leaderID) REFERENCES member(bannerID)
 );
 
 CREATE TABLE donation(
   donationID int NOT NULL AUTO_INCREMENT,
-  dType varchar(20),
-  receivedDate DATE,
   amount int,
-  donor varchar(40),
+  donationType varchar(20),
+  donatedFrom varchar(40),
+  receivedDate DATE,
   reason varchar(255),
   CONSTRAINT PRIMARY KEY (donationID)
 );
 
 CREATE TABLE part(
-    partNumber int NOT NULL CHECK (partNumber > 0 AND partNumber < 10001),
-    partName varchar(25),
-    donationID int,
-    quantity int NOT NULL,
+    partNumber int NOT NULL CHECK (partNumber > -1 AND partNumber < 10001),
     category varchar(25),
+    donationID int,
+    partName varchar(25),
     partLocation varchar(25) NOT NULL,
+    quantity int NOT NULL,
     partManufacturer varchar(25),
 
     CONSTRAINT PRIMARY KEY (partNumber),
@@ -64,19 +67,19 @@ CREATE TABLE part(
 
 CREATE TABLE purchase(
    purchaseID int NOT NULL,
-   orderDate DATE,
-   arrivalStatus bit,
    arrivalDate DATE,
-   purchaseType varchar(25),
-   quantityRequired int,
    quantityOrdered int,
-   unitPrice int,
-   purchasePriority int CHECK (purchasePriority > 0 AND purchasePriority < 11),
    orderDescription varchar(50),
+   subteamName varchar(25) NOT NULL,
+   orderDate DATE,
+   purchaseType varchar(25),
+   unitPrice int,
    purchasedFrom varchar(50),
+   partNumber int NOT NULL,
+   arrivalStatus bit,
+   quantityRequired int,
+   purchasePriority int CHECK (purchasePriority > 0 AND purchasePriority < 11),
    orderName varchar(25),
-   subteamName varchar(25),
-   partNumber int,
 
    CONSTRAINT PRIMARY KEY (purchaseID),
    CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber),
