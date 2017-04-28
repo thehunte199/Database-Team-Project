@@ -27,7 +27,7 @@ CREATE TABLE project(
    projectName varchar(25) NOT NULL,
    completedDate DATE,
    subteamName varchar(25) NOT NULL,
-   startDate DATE NOT NULL,
+   startDate DATE,
    projDesc varchar(255) NOT NULL,
    assignDate DATE NOT NULL,
    dueDate DATE NOT NULL,
