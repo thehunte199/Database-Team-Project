@@ -74,7 +74,7 @@ CREATE TABLE purchase(
    purchasedFrom varchar(50),
    partNumber int NOT NULL,
    arrivalStatus bit,
-   quantityRequired int,
+   quantityRequested int,
    purchasePriority int CHECK (purchasePriority > 0 AND purchasePriority < 11),
    orderName varchar(25),
 
