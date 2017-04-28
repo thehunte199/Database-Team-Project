@@ -1,0 +1,9 @@
+CREATE TABLE working_on (
+	bannerID char(9),
+	projectName varchar(25),
+	startDate date(),
+
+	CONSTRAINT PRIMARY KEY (bannerID, projectName),
+	CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
+	CONSTRAINT FOREIGN KEY (projectName) REFERENCES project(projectName),
+);
