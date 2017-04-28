@@ -15,10 +15,7 @@ VALUES
 ('$_POST[teamName]','$_POST[joinDate]','$_POST[parentTeam]','$_POST[bannerID]','$_POST[purpose]','$_POST[leaderID]')",$mydb);
 ?>
 <?php
-    $sql="INSERT INTO subteam(teamName, joinDate, parentTeam, bannerID, purpose, leaderID)
-VALUES
-('$_POST[teamName]','$_POST[joinDate]','$_POST[parentTeam]','$_POST[bannerID]','$_POST[purpose]','$_POST[leaderID]')";
-    $result = @mysql_query($sql, $mydb);
+    $result = @mysql_query("SELECT * FROM ".$_POST["entity"], $mydb);
     
     if ($result)
     {

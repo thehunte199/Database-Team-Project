@@ -15,10 +15,8 @@ VALUES
 ('$_POST[projectName]','$_POST[completedDate]','$_POST[subteamName]','$_POST[startDate]','$_POST[projDesc]','$_POST[assignDate]','$POST_[dueDate]','$POST_[projPriority]','$POST_[leaderID]')",$mydb);
 ?>
 <?php
-    $sql="INSERT INTO project(projectName,completedDate,subteamName,startDate,projDesc,assignDate,dueDate,projPriority,leaderID)
-VALUES
-('$_POST[projectName]','$_POST[completedDate]','$_POST[subteamName]','$_POST[startDate]','$_POST[projDesc]','$_POST[assignDate]','$POST_[dueDate]','$POST_[projPriority]','$POST_[leaderID]')";
-    $result = @mysql_query($sql, $mydb);
+
+    $result = @mysql_query("SELECT * FROM ".$_POST["entity"], $mydb);
     
     if ($result)
     {

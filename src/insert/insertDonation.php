@@ -15,10 +15,8 @@
         ('$_POST[donationID]','$_POST[amount]','$_POST[donationType]','$_POST[donatedFrom]','$_POST[dateReceived]','$_POST[reason]')",$mydb);
 ?>
 <?php
-    $sql="INSERT INTO donation(donationID,amount,donationType,donatedFrom,dateReceived,reason)
-        VALUES
-        ('$_POST[donationID]','$_POST[amount]','$_POST[donationType]','$_POST[donatedFrom]','$_POST[dateReceived]','$_POST[reason]')";
-    $result = @mysql_query($sql, $mydb);
+
+    $result = @mysql_query("SELECT * FROM ".$_POST["entity"], $mydb);
     
     if ($result)
     {

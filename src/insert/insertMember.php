@@ -14,9 +14,8 @@
     VALUES ('$_POST[memFName]','$_POST[bannerID]','$_POST[memCollege]','$_POST[shirtSize]','$_POST[memMName]','$_POST[memEmail]','$_POST[memMajor]','$_POST[memberStatus]','$_POST[memLName]','$POST_[memPhoneNum]','$POST_[memClass]')",$mydb);
 ?>
 <?php
-    $sql = "INSERT INTO member (memFName,bannerID,memCollege,shirtSize,memMName,memEmail,memMajor,memberStatus,memLname,memPhoneNum,memClass)
-    VALUES ('$_POST[memFName]','$_POST[bannerID]','$_POST[memCollege]','$_POST[shirtSize]','$_POST[memMName]','$_POST[memEmail]','$_POST[memMajor]','$_POST[memberStatus]','$_POST[memLName]','$POST_[memPhoneNum]','$POST_[memClass]')"
-    $result = @mysql_query($sql, $mydb);
+
+    $result = @mysql_query("SELECT * FROM ".$_POST["entity"], $mydb);
     
     if ($result)
     {

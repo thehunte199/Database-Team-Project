@@ -15,10 +15,8 @@ VALUES
 ('$_POST[partNumber]','$_POST[category]','$_POST[donationID]','$_POST[partName]','$_POST[partLocation]','$_POST[quantity]','$POST_[partManufacturer]')",$mydb);
 ?>
 <?php
-    $sql="INSERT INTO part(partNumber,category,donationID,partName,partLocation,quantity,partManufacturer)
-VALUES
-('$_POST[partNumber]','$_POST[category]','$_POST[donationID]','$_POST[partName]','$_POST[partLocation]','$_POST[quantity]','$POST_[partManufacturer]')";
-    $result = @mysql_query($sql, $mydb);
+
+    $result = @mysql_query("SELECT * FROM ".$_POST["entity"], $mydb);
     
     if ($result)
     {
