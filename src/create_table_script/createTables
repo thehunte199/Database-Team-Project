@@ -16,7 +16,6 @@ CREATE TABLE member(
 
 CREATE TABLE subteam(
   teamName varchar(25) NOT NULL,
-  joinDate DATE,
   parentTeam varchar(25),
   bannerID char(9),
   purpose varchar(255),
