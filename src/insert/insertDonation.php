@@ -10,6 +10,11 @@
 <?php
     include("accessTest.txt");
     mysql_select_db("DBS17T-9", $mydb);
+    mysql_query("INSERT INTO donation(donationID,amount,donationType,donatedFrom,dateReceived,reason)
+        VALUES
+        ('$_POST[donationID]','$_POST[amount]','$_POST[donationType]','$_POST[donatedFrom]','$_POST[dateReceived]','$_POST[reason]')",$mydb);
+?>
+<?php
     $sql="INSERT INTO donation(donationID,amount,donationType,donatedFrom,dateReceived,reason)
         VALUES
         ('$_POST[donationID]','$_POST[amount]','$_POST[donationType]','$_POST[donatedFrom]','$_POST[dateReceived]','$_POST[reason]')";

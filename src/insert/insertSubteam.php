@@ -10,6 +10,11 @@
 <?php
     include("accessTest.txt");
     mysql_select_db("DBS17T-9", $mydb);
+    mysql_query("INSERT INTO subteam(teamName, joinDate, parentTeam, bannerID, purpose, leaderID)
+VALUES
+('$_POST[teamName]','$_POST[joinDate]','$_POST[parentTeam]','$_POST[bannerID]','$_POST[purpose]','$_POST[leaderID]')",$mydb);
+?>
+<?php
     $sql="INSERT INTO subteam(teamName, joinDate, parentTeam, bannerID, purpose, leaderID)
 VALUES
 ('$_POST[teamName]','$_POST[joinDate]','$_POST[parentTeam]','$_POST[bannerID]','$_POST[purpose]','$_POST[leaderID]')";
