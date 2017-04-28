@@ -31,7 +31,7 @@ CREATE TABLE project(
    completedDate DATE,
    subteamName varchar(25) NOT NULL,
    startDate DATE NOT NULL,
-   projDesc varchar(257) NOT NULL,
+   projDesc varchar(255) NOT NULL,
    assignDate DATE NOT NULL,
    dueDate DATE NOT NULL,
    projPriority int(10) NOT NULL CHECK (projPriority <=10 AND projPriority > 0),
@@ -89,7 +89,7 @@ CREATE TABLE purchase(
 CREATE TABLE requires(
    subteamName varchar(25) NOT NULL,
    partNumber int NOT NULL,
-   requiredDate DATE NOT NULL,
+   acquireDate DATE NOT NULL,
    CONSTRAINT PRIMARY KEY (subteamName, partNumber),
    CONSTRAINT FOREIGN KEY (subteamName) REFERENCES subteam(teamName),
    CONSTRAINT FOREIGN KEY (partNumber) REFERENCES part(partNumber)
@@ -97,7 +97,7 @@ CREATE TABLE requires(
 
 CREATE TABLE working_on (
    bannerID char(9),
-   PName varchar(25),
+   projectName varchar(25),
    startDate DATE,
    CONSTRAINT PRIMARY KEY (bannerID, PName),
    CONSTRAINT FOREIGN KEY (bannerID) REFERENCES member(bannerID),
