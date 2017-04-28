@@ -1,0 +1,14 @@
+CREATE TABLE purchase
+(
+    ID int NOT NULL AUTO_INCREMENT,
+    ArrivalDate date,
+    OrderDate date,
+    Name varchar(25),
+    Type varchar(25),
+    Vendor varchar(255) NOT NULL,
+    QuantityOrdered int NOT NULL,
+    Cost double(10, 2) NOT NULL,
+    Priority varchar(15),
+
+    CONSTRAINT PRIMARY KEY (ID),
+);
