@@ -10,7 +10,7 @@
 <?php
     include("access.txt");
     mysql_select_db("wardja2", $mydb);
-    $result = @mysql_query("UPDATE " .POST["tableDropdown"] . " SET " .$_POST["attributeDropdownSet"] . "=" .$_POST["updateValue"] . " WHERE " .$_POST["attributeDropdownWhere"] . " ".$_POST["compOperator"] ." " .$_POST["condition"], $mydb);
+    $result = @mysql_query("UPDATE ". $_POST["tableDropdown"] . " SET " .$_POST["attributeDropdownSet"] . "=" .$_POST["updateValue"] . " WHERE " .$_POST["attributeDropdownWhere"] . " ".$_POST["compOperator"] ." " .$_POST["condition"], $mydb);
     
     if(!$result)
     {
@@ -46,7 +46,7 @@
     {
         die("ERROR_CODE_110: IMPROPER SELECT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
     }
-    
+
     mysql_free_result($result);
 ?>
 </table>
