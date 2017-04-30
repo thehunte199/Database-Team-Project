@@ -13,25 +13,17 @@
         };
 
         var donation = ["donationID", "donationType", "receivedDate", "amount", "donatedFrom", "reason"];
-
-        var member = ["bannerID", "memFName", "memMName", "memLName", "memPhoneNum", "memCollege", "memMajor","memClass", "shirtSize", "memberStatus"];
-
-        var purchase = ["purchaseID", "orderDate", "arrivalStatus", "arrivalDate", "purchaseType", "quantityRequired", "quantityOrdered", "unitPrice", "puchasePriority", "orderDescription", "purchasedFrom", "orderName", "subteamName", "partNumber"];
-
-        var subteam = ["teamName", "parentTeam", "purpose", "joinDate", "bannerID", "leaderID"];
-
-        var project = ["projectName", "startDate", "dueDate", "completedDate", "projDesc", "projPriority", "subteamName", "assignDate", "leaderID",];
-
+        var member = ["bannerID", "memFName", "memMName", "memLName", "memPhoneNum", "memCollege", "memMajor","memClass", "shirtSize", "memberStatus", "memEmail"];
+        var purchase = ["purchaseID", "orderDate", "arrivalStatus", "arrivalDate", "purchaseType", "quantityRequested", "quantityOrdered", "unitPrice", "purchasePriority", "orderDescription", "purchasedFrom", "orderName", "subteamName", "partNumber"];
+        var subteam = ["teamName", "parentTeam", "purpose", "leaderID"];
+        var project = ["projectName", "startDate", "dueDate", "completedDate", "projDesc", "projPriority", "subteamName", "assignDate", "leaderID"];
         var part =["partNumber", "partName", "quantity", "category", "partLocation", "partManufacturer", "donationID"];
-
         var working_on = ["bannerID", "projectName", "startDate"]
         var rent = ["bannerID", "partNumber", "rentDate"]
         var uses = ["projectName", "partNumber", "dateUsed"]
         var requires = ["subteamName", "partNumber", "acquireDate"]
         var receives = ["subteamName", "donationID", "receiveDate"]
-        var membership = ["bannerID", "teamName", "joinDate"]
-        var working = ["projectName", "teamName", "assignDate"]
-        var makes = ["teamName", "purchaseID", "orderName"]  
+        var membership = ["bannerID", "subteamName", "joinDate"]
 
         setAttributes = function(entity)
         {
@@ -59,8 +51,6 @@
                 case "requires": tableType = requires; break;
                 case "receives": tableType = receives; break;
                 case "membership": tableType = membership; break;
-                case "makes": tableType = makes; break;
-                case "working": tableType = working; break;
             }
 
             for(i = 0; i < tableType.length; i++)
@@ -93,11 +83,9 @@
                     <option value="membership">Membership</option>
                     <option value="working_on">Working On</option>
                     <option value="rent">Rent</option>
-                    <option value="working">Working</option>
                     <option value="uses">Uses</option>
                     <option value="requires">Requires</option>
                     <option value="receives">Receives</option>
-                    <option value="makes">Makes</option>
                 </select>
             </td>
         </tr>
