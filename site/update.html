@@ -9,10 +9,10 @@
         {
             var select = document.createElement("select");
             select.setAttribute("name", "attributeDropdownSet");
-            //var select2 = document.createElement("select2");
-            //select2.setAttribute("name", "attributeDropdownWhere");
+            var select2 = document.createElement("select");
+            select2.setAttribute("name", "attributeDropdownWhere");
             document.getElementById("formTable").rows[1].cells[1].appendChild(select);
-            //document.getElementById("formTable").rows[2].cells[1].appendChild(select2);
+            document.getElementById("formTable").rows[2].cells[1].appendChild(select2);
         };
 
         var donation = ["donationID", "amount", "donationType", "donatedFrom", "receivedDate", "reason"];
