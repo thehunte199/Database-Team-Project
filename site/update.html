@@ -4,32 +4,112 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/page.css">
+    <script>
+        window.onload = function()
+        {
+            var select = document.createElement("select");
+            select.setAttribute("name", "attributeDropdownSet");
+            var select2 = document.createElement("select");
+            select2.setAttribute("name", "attributeDropdownWhere");
+            document.getElementById("formTable").rows[1].cells[1].appendChild(select);
+            document.getElementById("formTable").rows[2].cells[1].appendChild(select2);
+        };
+
+        var donation = ["donationID", "amount", "donationType", "donatedFrom", "receivedDate", "reason"];
+
+        var member = ["memFName", "bannerID", "memCollege", "shirtSize", "memMName", "memEmail", "memMajor","memberStatus", "memLName", "memPhoneNum", "memClass"];
+
+        var purchase = ["purchaseID", "arrivalDate", "quantityOrdered", "orderDescription", "subteamName", "orderDate", "purchaseType", "unitPrice", "purchasedFrom", "partNumber", "arrivalStatus", "quantityRequested", "purchasePriority", "orderName"];
+
+        var subteam = ["teamName", "parentTeam", "purpose", "leaderID"];
+
+        var project = ["projectName", "completedDate", "subteamName", "startDate", "projDesc", "assignDate", "dueDate", "projPriority", "leaderID"];
+
+        var part =["partNumber", "category", "donationID", "partName", "partLocation", "quantity", "partManufacturer"];
+
+        var working_on = ["bannerID", "projectName", "startDate"]
+        var rent = ["bannerID", "partNumber", "rentDate"]
+        var uses = ["projectName", "partNumber", "dateUsed"]
+        var requires = ["subteamName", "partNumber", "acquireDate"]
+        var receives = ["subteamName", "donationID", "receiveDate"]
+        var membership = ["bannerID", "subteamName", "joinDate"]
+
+        setAttributes = function(entity)
+        {
+            var select = document.createElement("select");
+            select.setAttribute("name", "attributeDropdownSet");
+            var select2 = document.createElement("select");
+            select2.setAttribute("name", "attributeDropdownWhere");
+
+            var table = document.getElementById("formTable");
+            table.rows[1].deleteCell(1);
+            table.rows[2].deleteCell(1);
+            table.rows[1].insertCell(1);
+            table.rows[2].insertCell(1);
+            table.rows[1].cells[1].appendChild(select);
+            table.rows[2].cells[1].appendChild(select2);
+
+            var tableType;
+
+            switch(entity.value)
+            {
+                case "member": tableType = member; break;
+                case "purchase": tableType = purchase; break;
+                case "donation": tableType = donation; break;
+                case "subteam": tableType = subteam; break;
+                case "project": tableType = project; break;
+                case "part": tableType = part; break;
+                case "rent": tableType = rent; break;
+                case "working_on": tableType = working_on; break;
+                case "uses": tableType = uses; break;
+                case "requires": tableType = requires; break;
+                case "receives": tableType = receives; break;
+                case "membership": tableType = membership; break;
+            }
+
+            for(i = 0; i < tableType.length; i++)
+            {
+                var option = document.createElement("option");
+                var option2 = document.createElement("option");
+                option.setAttribute('value', tableType[i]);
+                option.appendChild(document.createTextNode(tableType[i]));
+                option2.setAttribute('value', tableType[i]);
+                option2.appendChild(document.createTextNode(tableType[i]));
+                select.add(option);
+                select2.add(option2);
+            }
+        }
+    </script>
+
     </head>
 <body>
     <main>
-        <form id="updateForm" action="update.php" method="POST">
+        <form id="updateForm" action="php/update.php" method="POST">
         <fieldset><legend>Update</legend>
-    <table>
+    <table id="formTable">
         <tr>
             <td>Table:</td>
             <td>
-                <select name="tableDropdown" selected="">
+                <select name="tableDropdown" selected="" onchange="setAttributes(this)">
                     <option value=""/>
-                    <option value="Donation">Donation</option>
-                    <option value="Member">Member</option>
-                    <option value="Project">Project</option>
-                    <option value="Part">Part</option>
-                    <option value="Purchase">Purchase</option>
-                    <option value="Subteam">Subteam</option>
+                    <option value="member">Member</option>
+                    <option value="purchase">Purchase</option>
+                    <option value="donation">Donation</option>
+                    <option value="subteam">Subteam</option>
+                    <option value="project">Project</option>
+                    <option value="part">Part</option>
+                    <option value="rent">Rent</option>
+                    <option value="working_on">Working On</option>
+                    <option value="uses">Uses</option>
+                    <option value="requires">Requires</option>
+                    <option value="receives">Receives</option>
+                    <option value="membership">Membership</option>
                 </select>
             </td>
         </tr>
         <tr>
         <td>Set:</td>
             <td>
-                <select name="attributeDropdownSet" selected="">
-                    <option value=""/>
-                </select>
             </td>
             <td><section>to</section></td>
             <td>
@@ -39,9 +119,6 @@
         <tr>
             <td>Where:</td>
             <td>
-                <select name="attributeDropdownWhere" selected="">
-                    <option value=""/>
-                </select>
             </td>
             <td>
                 <select name="compOperator" selected="=">
@@ -65,4 +142,3 @@
     </main>
 </body>
 </html>
-
