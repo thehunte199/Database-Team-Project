@@ -34,7 +34,7 @@
         var receives = ["subteamName", "donationID", "receiveDate"]
         var membership = ["bannerID", "subteamName", "joinDate"]
 
-        setAttributes = function(tableDropdown)
+        setAttributes = function(entity)
         {
             var select = document.createElement("select");
             select.setAttribute("name", "attributeDropdownSet");
@@ -51,7 +51,7 @@
 
             var tableType;
 
-            switch(tableDropdown.value)
+            switch(entity.value)
             {
                 case "member": tableType = member; break;
                 case "purchase": tableType = purchase; break;
@@ -70,10 +70,13 @@
             for(i = 0; i < tableType.length; i++)
             {
                 var option = document.createElement("option");
+                var option2 = document.createElement("option");
                 option.setAttribute('value', tableType[i]);
                 option.appendChild(document.createTextNode(tableType[i]));
+                option2.setAttribute('value', tableType[i]);
+                option2.appendChild(document.createTextNode(tableType[i]));
                 select.add(option);
-                select2.add(option);
+                select2.add(option2);
             }
         }
     </script>
@@ -107,9 +110,6 @@
         <tr>
         <td>Set:</td>
             <td>
-                <select name="attributeDropdownSet" selected="">
-                    <option value=""/>
-                </select>
             </td>
             <td><section>to</section></td>
             <td>
@@ -119,9 +119,6 @@
         <tr>
             <td>Where:</td>
             <td>
-                <select name="attributeDropdownWhere" selected="">
-                    <option value=""/>
-                </select>
             </td>
             <td>
                 <select name="compOperator" selected="=">

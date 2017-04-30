@@ -11,34 +11,17 @@
     include("access.txt");
     mysql_select_db("wardja2", $mydb);
     $result = @mysql_query("UPDATE " .POST["tableDropdown"] . " SET " .$_POST["attributeDropdownSet"] . "=" .$_POST["updateValue"] . " WHERE " .$_POST["attributeDropdownWhere"] . " ".$_POST["compOperator"] ." " .$_POST["condition"], $mydb);
-
-    if ($result)
+    
+    if(!$result)
     {
-        echo "<tr>";
-
-        for($i = 0; $i < mysql_num_fields($result); $i++)
-        {
-            $entity = mysql_fetch_field($result, $i);
-            echo "<th>". $table->name . "</th>";
-        }
-        echo "</tr>";
-        while($tuple = mysql_fetch_row($result))
-        {
-            echo "<tr>";
-
-            for($i = 0; $i < mysql_num_fields($result); $i++)
-                echo "<td>".$tuple[$i]."</td>";
-            echo "</tr>";
-        }
+        die("ERROR_CODE_110: IMPROPER UPDATE QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
     }
-    else
-    {
-        die("Invalid query... some other text should go here: " . mysql_error());
-    }
+
     mysql_free_result($result);
 ?>
 <?php
     $result = @mysql_query("SELECT * FROM ".$_POST["tableDropdown"], $mydb);
+
     if ($result)
     {
         echo "<tr>";
@@ -61,8 +44,9 @@
     }
     else
     {
-        die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
+        die("ERROR_CODE_110: IMPROPER SELECT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
     }
+    
     mysql_free_result($result);
 ?>
 </table>
