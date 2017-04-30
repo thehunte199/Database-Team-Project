@@ -29,14 +29,20 @@
     <button class="tablinks" onclick="openTable(event, 'Project')">Project</button>
     <button class="tablinks" onclick="openTable(event, 'Purchase')">Purchase</button>
     <button class="tablinks" onclick="openTable(event, 'Subteam')">Subteam</button>
+    <button class="tablinks" onclick="openTable(event, 'Membership')">Membership</button>
+    <button class="tablinks" onclick="openTable(event, 'WorkingOn')">Working On</button>
+    <button class="tablinks" onclick="openTable(event, 'Rent')">Rent</button>
+    <button class="tablinks" onclick="openTable(event, 'Uses')">Uses</button>
+    <button class="tablinks" onclick="openTable(event, 'Requires')">Requires</button>
+    <button class="tablinks" onclick="openTable(event, 'Receives')">Receives</button>
 </div>
 
 <div id="Donation" class="tabcontent">
-    <form id="insertDonation" action="insertDonation.php" method="POST">
+    <form id="insertDonation" action="php/insertDonation.php" method="POST">
     <table>
         <tr>
-            <td>ID:</td>
-            <td><input type="number" name="donationID" min="0"/></td>
+            <td>Donation ID:</td>
+            <td><input type="number" name="donationID" min="0"/><span class="required">*</span></td>
             <td/>
             <td>Amount:</td>
             <td><input type="number" name="amount" min="0"/></td>
@@ -63,14 +69,14 @@
 </div>
 
 <div id="Member" class="tabcontent">
-    <form id="insertMember" action="insertMember.php" method="POST">
+    <form id="insertMember" action="php/insertMember.php" method="POST">
     <table>
         <tr>
             <td>First name:</td>
             <td><input type="text" name="memFName"/></td>
             <td/>
             <td>Banner ID:</td>
-            <td><input type="text" name="bannerID"/></td>
+            <td><input type="text" name="bannerID"/><span class="required">*</span></td>
             <td/>
             <td>College:</td>
             <td><input type="text" name="memCollege"/></td>
@@ -90,8 +96,8 @@
             <td/>
             <td>Member status:</td>
             <td>
-                <input type="radio" name="memberStatus" value="active">Active</input>
-                <input type="radio" name="memberStatus" value="inactive">Inactive</input>
+                <input type="radio" name="memberStatus" value="1">Active</input>
+                <input type="radio" name="memberStatus" value="0">Inactive</input>
             </td>
         </tr>
         <tr>
@@ -112,28 +118,28 @@
 </div>
 
 <div id="Part" class="tabcontent">
-    <form id="insertPart" action="insertPart.php" method="POST">
+    <form id="insertPart" action="php/insertPart.php" method="POST">
     <table>
         <tr>
             <td>Part number:</td>
-            <td><input type="number" name="partNumber" min="0"/></td>
+            <td><input type="number" name="partNumber" min="0"/><span class="required">*</span></td>
             <td/>
             <td>Category:</td>
             <td><input type="text" name="category"/></td>
             <td/>
             <td>Donation ID:</td>
-            <td><input type="number" name="donationID" min="0"/></td>
+            <td><input type="number" name="donationID" min="0"/><span class="required">*</span></td>
         </tr>
         <tr>
             <td>Part name:</td>
             <td><input type="text" name="partName"/></td>
             <td/>
             <td>Storage location:</td>
-            <td><input type="text" name="partLocation"/></td>
+            <td><input type="text" name="partLocation"/><span class="required">*</span></td>
         </tr>
         <tr>
             <td>Quantity:</td>
-            <td><input type="number" name="quantity" min="1"/></td>
+            <td><input type="number" name="quantity" min="1"/><span class="required">*</span></td>
             <td/>
             <td>Manufacturer:</td>
             <td><input type="text" name="partManufacturer"/></td>
@@ -146,11 +152,11 @@
 </div>
 
 <div id="Project" class="tabcontent">
-    <form id="insertProject" action="insertProject.php" method="POST">
+    <form id="insertProject" action="php/insertProject.php" method="POST">
     <table>
         <tr>
             <td>Project name:</td>
-            <td><input type="text" name="projectName"/></td>
+            <td><input type="text" name="projectName"/><span class="required">*</span></td>
             <td/>
             <td>Completed date:</td>
             <td><input type="date" name="completedDate"/></td>
@@ -163,17 +169,17 @@
             <td><input type="date" name="startDate"/></td>
             <td/>
             <td>Project description:</td>
-            <td><input type="text" name="projDesc"/></td>
+            <td><input type="text" name="projDesc"/><span class="required">*</span></td>
             <td/>
             <td>Assigned Date:</td>
-            <td><input type="date" name="assignDate"/></td>
+            <td><input type="date" name="assignDate"/><span class="required">*</span></td>
         </tr>
         <tr>
             <td>Due date:</td>
-            <td><input type="date" name="dueDate"/></td>
+            <td><input type="date" name="dueDate"/><span class="required">*</span></td>
             <td/>
             <td>Project priority:</td>
-            <td><input type="number" name="projPriority" min="1" max="10"/></td>
+            <td><input type="number" name="projPriority" min="1" max="10"/><span class="required">*</span></td>
             <td/>
             <td>Leader banner ID:</td>
             <td><input type="number" name="leaderID" min="0"/></td>
@@ -186,11 +192,11 @@
 </div>
 
 <div id="Purchase" class="tabcontent">
-    <form id="insertPurchase" action="insertPurchase.php" method="POST">
+    <form id="insertPurchase" action="php/insertPurchase.php" method="POST">
     <table>
         <tr>
             <td>Purchase ID:</td>
-            <td><input type="number" name="purchaseID" min="0"/></td>
+            <td><input type="number" name="purchaseID" min="0"/><span class="required">*</span></td>
             <td/>
             <td>Arrival date:</td>
             <td><input type="date" name="arrivalDate"/></td>
@@ -223,12 +229,12 @@
         <tr>
             <td>Arival status:</td>
             <td>
-                <input type="radio" name="arrivalStatus" value="arrived">Arrived</input>
-                <input type="radio" name="arrivalStatus" value="not_arrived">Not arrived</input>
+                <input type="radio" name="arrivalStatus" value="1">Arrived</input>
+                <input type="radio" name="arrivalStatus" value="0">Not arrived</input>
             </td>
             <td/>
-            <td>Quantity required:</td>
-            <td><input type="number" name="quantityRequired" min="0"/></td>
+            <td>Quantity requested:</td>
+            <td><input type="number" name="quantityRequested" min="0"/></td>
             <td/>
             <td>Purchase priority:</td>
             <td><input type="number" name="purchasePriority" min="1" max="10"/></td>
@@ -244,28 +250,174 @@
 </div>
 
 <div id="Subteam" class="tabcontent">
-    <form id="insertSubteam" action="insertSubteam.php" method="POST">
+    <form id="insertSubteam" action="php/insertSubteam.php" method="POST">
     <table>
         <tr>
             <td>Team name:</td>
-            <td><input type="text" name="teamName"/></td>
+            <td><input type="text" name="teamName"/><span class="required">*</span></td>
             <td/>
-            <td>Member join date:</td>
-            <td><input type="date" name="joinDate"/></td>
+            <td>Leader banner ID:</td>
+            <td><input type="number" name="leaderID" min="0"/></td>
         </tr>
         <tr>
             <td>Parent team name:</td>
             <td><input type="text" name="parentTeam"/></td>
             <td/>
-            <td>Member banner ID:</td>
-            <td><input type="number" name="bannerID" min="0"/></td>
         </tr>
         <tr>
             <td>Purpose:</td>
             <td><input type="text" name="purpose"/></td>
             <td/>
-            <td>Leader banner ID:</td>
-            <td><input type="number" name="leaderID" min="0"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" formtarget="viewIframe" value="Insert"/></td>
+        </tr>
+    </table>
+    </form>
+</div>
+
+<div id="Membership" class="tabcontent">
+    <form id="insertMembership" action="php/insertMembership.php" method="POST">
+    <table>
+        <tr>
+            <td>Banner ID:</td>
+            <td><input type="number" name="bannerID" min="0"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Team name:</td>
+            <td><input type="text" name="subteamName"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Join date:</td>
+            <td><input type="date" name="joinDate"/></td>
+            <td/>
+        </tr>
+        <tr>
+            <td><input type="submit" formtarget="viewIframe" value="Insert"/></td>
+        </tr>
+    </table>
+    </form>
+</div>
+
+<div id="WorkingOn" class="tabcontent">
+    <form id="insertWorkingOn" action="php/insertWorkingOn.php" method="POST">
+    <table>
+        <tr>
+            <td>Banner ID:</td>
+            <td><input type="number" name="bannerID" min="0"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Project name:</td>
+            <td><input type="text" name="projectName"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Start date:</td>
+            <td><input type="date" name="startDate"/></td>
+            <td/>
+        </tr>
+        <tr>
+            <td><input type="submit" formtarget="viewIframe" value="Insert"/></td>
+        </tr>
+    </table>
+    </form>
+</div>
+
+<div id="Rent" class="tabcontent">
+    <form id="insertRent" action="php/insertRent.php" method="POST">
+    <table>
+        <tr>
+            <td>Banner ID:</td>
+            <td><input type="number" name="bannerID" min="0"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Part number:</td>
+            <td><input type="number" name="partNumber" min="0"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Rent date:</td>
+            <td><input type="date" name="rentDate"/></td>
+            <td/>
+        </tr>
+        <tr>
+            <td><input type="submit" formtarget="viewIframe" value="Insert"/></td>
+        </tr>
+    </table>
+    </form>
+</div>
+
+<div id="Uses" class="tabcontent">
+    <form id="insertUses" action="php/insertUses.php" method="POST">
+    <table>
+        <tr>
+            <td>Project name:</td>
+            <td><input type="text" name="projectName"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Part number:</td>
+            <td><input type="number" name="partNumber" min="0"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Used date:</td>
+            <td><input type="date" name="dateUsed"/></td>
+            <td/>
+        </tr>
+        <tr>
+            <td><input type="submit" formtarget="viewIframe" value="Insert"/></td>
+        </tr>
+    </table>
+    </form>
+</div>
+
+<div id="Requires" class="tabcontent">
+    <form id="insertRequires" action="php/insertRequires.php" method="POST">
+    <table>
+        <tr>
+            <td>Team name:</td>
+            <td><input type="text" name="subteamName"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Part number:</td>
+            <td><input type="number" name="partNumber" min="0"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Acquire date:</td>
+            <td><input type="date" name="acquireDate"/></td>
+            <td/>
+        </tr>
+        <tr>
+            <td><input type="submit" formtarget="viewIframe" value="Insert"/></td>
+        </tr>
+    </table>
+    </form>
+</div>
+
+<div id="Receives" class="tabcontent">
+    <form id="insertReceives" action="php/insertReceives.php" method="POST">
+    <table>
+        <tr>
+            <td>Team name:</td>
+            <td><input type="text" name="subteamName"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Donation ID:</td>
+            <td><input type="number" name="donationID" min="0"/><span class="required">*</span></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>Receive date:</td>
+            <td><input type="date" name="receiveDate"/></td>
+            <td/>
         </tr>
         <tr>
             <td><input type="submit" formtarget="viewIframe" value="Insert"/></td>
