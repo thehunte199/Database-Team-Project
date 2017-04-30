@@ -3,8 +3,8 @@ main {
 }
 
 table td{
-    padding-left: .5em;
-    padding-right: .5em;
+    padding-left: .2em;
+    padding-right: .2em;
 }
 
 table td section{
@@ -81,6 +81,12 @@ div.tab button:hover {
 
 div.tab button.active {
     background-color: #444;
+}
+
+.required {
+    color: red;
+    margin-left: 5px;
+    font-size: 18px;
 }
 
 .tabcontent {

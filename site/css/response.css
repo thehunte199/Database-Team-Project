@@ -1,0 +1,21 @@
+body {
+    font: 14px "Arial";
+}
+
+table {
+    width: calc(100vw - 10px);
+    border: 1px solid gray;
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+tr:nth-child(odd) {
+    background-color: #ccc;
+}
+
+table td, th{
+    padding: .5em;
+    text-align: center;
+}
