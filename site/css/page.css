@@ -83,6 +83,12 @@ div.tab button.active {
     background-color: #444;
 }
 
+.required {
+    color: red;
+    margin-left: 5px;
+    font-size: 18px;
+}
+
 .tabcontent {
     position: relative;
     display: none;

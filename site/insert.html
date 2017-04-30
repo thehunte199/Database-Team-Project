@@ -32,10 +32,8 @@
     <button class="tablinks" onclick="openTable(event, 'Membership')">Membership</button>
     <button class="tablinks" onclick="openTable(event, 'WorkingOn')">Working On</button>
     <button class="tablinks" onclick="openTable(event, 'Rent')">Rent</button>
-    <button class="tablinks" onclick="openTable(event, 'Working')">Working</button>
     <button class="tablinks" onclick="openTable(event, 'Uses')">Uses</button>
     <button class="tablinks" onclick="openTable(event, 'Requires')">Requires</button>
-    <button class="tablinks" onclick="openTable(event, 'Makes')">Makes</button>
     <button class="tablinks" onclick="openTable(event, 'Receives')">Receives</button>
 </div>
 
@@ -43,8 +41,8 @@
     <form id="insertDonation" action="php/insertDonation.php" method="POST">
     <table>
         <tr>
-            <td>ID:</td>
-            <td><input type="number" name="donationID" min="0"/></td>
+            <td>Donation ID:</td>
+            <td><input type="number" name="donationID" min="0"/><span class="required">*</span></td>
             <td/>
             <td>Amount:</td>
             <td><input type="number" name="amount" min="0"/></td>
@@ -78,7 +76,7 @@
             <td><input type="text" name="memFName"/></td>
             <td/>
             <td>Banner ID:</td>
-            <td><input type="text" name="bannerID"/></td>
+            <td><input type="text" name="bannerID"/><span class="required">*</span></td>
             <td/>
             <td>College:</td>
             <td><input type="text" name="memCollege"/></td>
@@ -124,24 +122,24 @@
     <table>
         <tr>
             <td>Part number:</td>
-            <td><input type="number" name="partNumber" min="0"/></td>
+            <td><input type="number" name="partNumber" min="0"/><span class="required">*</span></td>
             <td/>
             <td>Category:</td>
             <td><input type="text" name="category"/></td>
             <td/>
             <td>Donation ID:</td>
-            <td><input type="number" name="donationID" min="0"/></td>
+            <td><input type="number" name="donationID" min="0"/><span class="required">*</span></td>
         </tr>
         <tr>
             <td>Part name:</td>
             <td><input type="text" name="partName"/></td>
             <td/>
             <td>Storage location:</td>
-            <td><input type="text" name="partLocation"/></td>
+            <td><input type="text" name="partLocation"/><span class="required">*</span></td>
         </tr>
         <tr>
             <td>Quantity:</td>
-            <td><input type="number" name="quantity" min="1"/></td>
+            <td><input type="number" name="quantity" min="1"/><span class="required">*</span></td>
             <td/>
             <td>Manufacturer:</td>
             <td><input type="text" name="partManufacturer"/></td>
@@ -158,7 +156,7 @@
     <table>
         <tr>
             <td>Project name:</td>
-            <td><input type="text" name="projectName"/></td>
+            <td><input type="text" name="projectName"/><span class="required">*</span></td>
             <td/>
             <td>Completed date:</td>
             <td><input type="date" name="completedDate"/></td>
@@ -171,17 +169,17 @@
             <td><input type="date" name="startDate"/></td>
             <td/>
             <td>Project description:</td>
-            <td><input type="text" name="projDesc"/></td>
+            <td><input type="text" name="projDesc"/><span class="required">*</span></td>
             <td/>
             <td>Assigned Date:</td>
-            <td><input type="date" name="assignDate"/></td>
+            <td><input type="date" name="assignDate"/><span class="required">*</span></td>
         </tr>
         <tr>
             <td>Due date:</td>
-            <td><input type="date" name="dueDate"/></td>
+            <td><input type="date" name="dueDate"/><span class="required">*</span></td>
             <td/>
             <td>Project priority:</td>
-            <td><input type="number" name="projPriority" min="1" max="10"/></td>
+            <td><input type="number" name="projPriority" min="1" max="10"/><span class="required">*</span></td>
             <td/>
             <td>Leader banner ID:</td>
             <td><input type="number" name="leaderID" min="0"/></td>
@@ -198,7 +196,7 @@
     <table>
         <tr>
             <td>Purchase ID:</td>
-            <td><input type="number" name="purchaseID" min="0"/></td>
+            <td><input type="number" name="purchaseID" min="0"/><span class="required">*</span></td>
             <td/>
             <td>Arrival date:</td>
             <td><input type="date" name="arrivalDate"/></td>
@@ -231,12 +229,12 @@
         <tr>
             <td>Arival status:</td>
             <td>
-                <input type="radio" name="arrivalStatus" value="arrived">Arrived</input>
-                <input type="radio" name="arrivalStatus" value="not_arrived">Not arrived</input>
+                <input type="radio" name="arrivalStatus" value="1">Arrived</input>
+                <input type="radio" name="arrivalStatus" value="0">Not arrived</input>
             </td>
             <td/>
-            <td>Quantity required:</td>
-            <td><input type="number" name="quantityRequired" min="0"/></td>
+            <td>Quantity requested:</td>
+            <td><input type="number" name="quantityRequested" min="0"/></td>
             <td/>
             <td>Purchase priority:</td>
             <td><input type="number" name="purchasePriority" min="1" max="10"/></td>
@@ -256,24 +254,20 @@
     <table>
         <tr>
             <td>Team name:</td>
-            <td><input type="text" name="teamName"/></td>
+            <td><input type="text" name="teamName"/><span class="required">*</span></td>
             <td/>
-            <td>Member join date:</td>
-            <td><input type="date" name="joinDate"/></td>
+            <td>Leader banner ID:</td>
+            <td><input type="number" name="leaderID" min="0"/></td>
         </tr>
         <tr>
             <td>Parent team name:</td>
             <td><input type="text" name="parentTeam"/></td>
             <td/>
-            <td>Member banner ID:</td>
-            <td><input type="number" name="bannerID" min="0"/></td>
         </tr>
         <tr>
             <td>Purpose:</td>
             <td><input type="text" name="purpose"/></td>
             <td/>
-            <td>Leader banner ID:</td>
-            <td><input type="number" name="leaderID" min="0"/></td>
         </tr>
         <tr>
             <td><input type="submit" formtarget="viewIframe" value="Insert"/></td>
@@ -287,12 +281,12 @@
     <table>
         <tr>
             <td>Banner ID:</td>
-            <td><input type="number" name="bannerID" min="0"/></td>
+            <td><input type="number" name="bannerID" min="0"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
             <td>Team name:</td>
-            <td><input type="text" name="teamName"/></td>
+            <td><input type="text" name="subteamName"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
@@ -312,12 +306,12 @@
     <table>
         <tr>
             <td>Banner ID:</td>
-            <td><input type="number" name="bannerID" min="0"/></td>
+            <td><input type="number" name="bannerID" min="0"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
             <td>Project name:</td>
-            <td><input type="text" name="projectName"/></td>
+            <td><input type="text" name="projectName"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
@@ -337,12 +331,12 @@
     <table>
         <tr>
             <td>Banner ID:</td>
-            <td><input type="number" name="bannerID" min="0"/></td>
+            <td><input type="number" name="bannerID" min="0"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
             <td>Part number:</td>
-            <td><input type="number" name="partNumber" min="0"/></td>
+            <td><input type="number" name="partNumber" min="0"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
@@ -357,42 +351,17 @@
     </form>
 </div>
 
-<div id="Working" class="tabcontent">
-    <form id="insertWorking" action="php/insertWorking.php" method="POST">
-    <table>
-        <tr>
-            <td>Project name:</td>
-            <td><input type="text" name="projectName"/></td>
-            <td/>
-        </tr>
-        <tr>
-            <td>Team name:</td>
-            <td><input type="text" name="teamName"/></td>
-            <td/>
-        </tr>
-        <tr>
-            <td>Assign date:</td>
-            <td><input type="date" name="assignDate"/></td>
-            <td/>
-        </tr>
-        <tr>
-            <td><input type="submit" formtarget="viewIframe" value="Insert"/></td>
-        </tr>
-    </table>
-    </form>
-</div>
-
 <div id="Uses" class="tabcontent">
     <form id="insertUses" action="php/insertUses.php" method="POST">
     <table>
         <tr>
             <td>Project name:</td>
-            <td><input type="text" name="projectName"/></td>
+            <td><input type="text" name="projectName"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
             <td>Part number:</td>
-            <td><input type="number" name="partNumber" min="0"/></td>
+            <td><input type="number" name="partNumber" min="0"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
@@ -412,42 +381,17 @@
     <table>
         <tr>
             <td>Team name:</td>
-            <td><input type="text" name="teamName"/></td>
+            <td><input type="text" name="subteamName"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
             <td>Part number:</td>
-            <td><input type="number" name="partNumber" min="0"/></td>
+            <td><input type="number" name="partNumber" min="0"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
-            <td>Required date:</td>
-            <td><input type="date" name="requiredDate"/></td>
-            <td/>
-        </tr>
-        <tr>
-            <td><input type="submit" formtarget="viewIframe" value="Insert"/></td>
-        </tr>
-    </table>
-    </form>
-</div>
-
-<div id="Makes" class="tabcontent">
-    <form id="insertMakes" action="php/insertMakes.php" method="POST">
-    <table>
-        <tr>
-            <td>Team name:</td>
-            <td><input type="text" name="teamName"/></td>
-            <td/>
-        </tr>
-        <tr>
-            <td>Purhase ID:</td>
-            <td><input type="number" name="purchaseID" min="0"/></td>
-            <td/>
-        </tr>
-        <tr>
-            <td>Order name:</td>
-            <td><input type="text" name="orderName"/></td>
+            <td>Acquire date:</td>
+            <td><input type="date" name="acquireDate"/></td>
             <td/>
         </tr>
         <tr>
@@ -462,12 +406,12 @@
     <table>
         <tr>
             <td>Team name:</td>
-            <td><input type="text" name="teamName"/></td>
+            <td><input type="text" name="subteamName"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
             <td>Donation ID:</td>
-            <td><input type="number" name="donationID" min="0"/></td>
+            <td><input type="number" name="donationID" min="0"/><span class="required">*</span></td>
             <td/>
         </tr>
         <tr>
