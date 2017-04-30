@@ -13,6 +13,10 @@
     mysql_query("INSERT INTO subteam(teamName, joinDate, parentTeam, bannerID, purpose, leaderID)
 VALUES
 ('$_POST[teamName]','$_POST[joinDate]','$_POST[parentTeam]','$_POST[bannerID]','$_POST[purpose]','$_POST[leaderID]')",$mydb);
+    if (!$insert)
+    {
+        die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
+    }
 ?>
 <?php
     $result = @mysql_query("SELECT * FROM ".$_POST["entity"], $mydb);
@@ -38,7 +42,7 @@ VALUES
     }
     else
     {
-        die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
+        die("ERROR_CODE_111: IMPROPER SELECT QUERY(There was an error retrieving the information from the Database.)" . mysql_error());
     }
     mysql_free_result($result);
 ?>

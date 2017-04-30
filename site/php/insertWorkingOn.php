@@ -13,6 +13,10 @@
     mysql_query("INSERT INTO working_on(bannerID, projectName, startDate)
         VALUES
         ('$_POST[bannerID]','$_POST[projectName]','$_POST[startDate]')",$mydb);
+    if (!$insert)
+    {
+        die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
+    }
 ?>
 <?php
 
@@ -39,7 +43,7 @@
     }
     else
     {
-        die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
+        die("ERROR_CODE_111: IMPROPER SELECT QUERY(There was an error retrieving the information from the Database.)" . mysql_error());
     }
     mysql_free_result($result);
 ?>

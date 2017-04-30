@@ -10,9 +10,13 @@
 <?php
     include("accessTest.txt");
     mysql_select_db("DBS17T-9", $mydb);
-    mysql_query("INSERT INTO purchase(purchaseID, arrivalDate, quantityOrdered, orderDescription, subteamName, orderDate, purchaseType, unitPrice, purchasedFrom, partNumber,arrivalStatus, quantityRequired, purchasePriority, orderName)
+    $insert = mysql_query("INSERT INTO purchase(purchaseID, arrivalDate, quantityOrdered, orderDescription, subteamName, orderDate, purchaseType, unitPrice, purchasedFrom, partNumber,arrivalStatus, quantityRequired, purchasePriority, orderName)
 VALUES
 ('$_POST[purchaseID]','$_POST[arrivalDate]','$_POST[quantityOrdered]','$_POST[orderDescription]','$_POST[subteamName]','$_POST[orderDate]','$POST_[purchaseType]','$POST_[unitPrice]','$POST_[purchasedFrom]','$POST_[partNumber]','$POST_[arrivalStatus]','$POST_[quantityRequired]','$POST_[purchasePriority]','$POST_[orderName]')",$mydb);
+    if (!$insert)
+    {
+        die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
+    }
 ?>
 <?php
 
@@ -39,7 +43,7 @@ VALUES
     }
     else
     {
-        die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
+        die("ERROR_CODE_111: IMPROPER SELECT QUERY(There was an error retrieving the information from the Database.)" . mysql_error());
     }
     mysql_free_result($result);
 ?>

@@ -10,9 +10,13 @@
 <?php
     include("accessTest.txt");
     mysql_select_db("DBS17T-9", $mydb);
-    mysql_query("INSERT INTO part(partNumber,category,donationID,partName,partLocation,quantity,partManufacturer)
+    $insert = mysql_query("INSERT INTO part(partNumber,category,donationID,partName,partLocation,quantity,partManufacturer)
 VALUES
 ('$_POST[partNumber]','$_POST[category]','$_POST[donationID]','$_POST[partName]','$_POST[partLocation]','$_POST[quantity]','$POST_[partManufacturer]')",$mydb);
+    if (!$insert)
+    {
+        die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
+    }
 ?>
 <?php
 
@@ -39,7 +43,7 @@ VALUES
     }
     else
     {
-        die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
+        die("ERROR_CODE_111: IMPROPER SELECT QUERY(There was an error retrieving the information from the Database.)" . mysql_error());
     }
     mysql_free_result($result);
 ?>
