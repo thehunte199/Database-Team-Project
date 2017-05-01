@@ -4,32 +4,94 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/page.css">
+    <script>
+        window.onload = function()
+        {
+            var select = document.createElement("select");
+            select.setAttribute("name", "attribute");
+            document.getElementById("formTable").rows[1].cells[1].appendChild(select);
+        };
+
+        var donation = ["donationID", "donationType", "receivedDate", "amount", "donatedFrom", "reason"];
+        var member = ["bannerID", "memFName", "memMName", "memLName", "memPhoneNum", "memCollege", "memMajor","memClass", "shirtSize", "memberStatus", "memEmail"];
+        var purchase = ["purchaseID", "orderDate", "arrivalStatus", "arrivalDate", "purchaseType", "quantityRequested", "quantityOrdered", "unitPrice", "purchasePriority", "orderDescription", "purchasedFrom", "orderName", "subteamName", "partNumber"];
+        var subteam = ["teamName", "parentTeam", "purpose", "leaderID"];
+        var project = ["projectName", "startDate", "dueDate", "completedDate", "projDesc", "projPriority", "subteamName", "assignDate", "leaderID"];
+        var part =["partNumber", "partName", "quantity", "category", "partLocation", "partManufacturer", "donationID"];
+        var working_on = ["bannerID", "projectName", "startDate"]
+        var rent = ["bannerID", "partNumber", "rentDate"]
+        var uses = ["projectName", "partNumber", "dateUsed"]
+        var requires = ["subteamName", "partNumber", "acquireDate"]
+        var receives = ["subteamName", "donationID", "receiveDate"]
+        var membership = ["bannerID", "subteamName", "joinDate"]
+
+        setAttributes = function(entity)
+        {
+            var select = document.createElement("select");
+            select.setAttribute("name", "attribute");
+
+            var table = document.getElementById("formTable");
+            table.rows[1].deleteCell(1);
+            table.rows[1].insertCell(1);
+            table.rows[1].cells[1].appendChild(select);
+
+            var tableType;
+
+            switch(entity.value)
+            {
+                case "member": tableType = member; break;
+                case "purchase": tableType = purchase; break;
+                case "donation": tableType = donation; break;
+                case "subteam": tableType = subteam; break;
+                case "project": tableType = project; break;
+                case "part": tableType = part; break;
+                case "rent": tableType = rent; break;
+                case "working_on": tableType = working_on; break;
+                case "uses": tableType = uses; break;
+                case "requires": tableType = requires; break;
+                case "receives": tableType = receives; break;
+                case "membership": tableType = membership; break;
+            }
+
+            for(i = 0; i < tableType.length; i++)
+            {
+                var option = document.createElement("option");
+                option.setAttribute('value', tableType[i]);
+                option.appendChild(document.createTextNode(tableType[i]));
+                select.add(option);
+            }
+        }
+    </script>
+
     </head>
 <body>
     <main>
-        <form id="viewForm" action="view.php" method="POST">
+        <form id="viewForm" action="php/view.php" method="POST">
         <fieldset><legend>View</legend>
-    <table>
+    <table id="formTable">
         <tr>
             <td>Table:</td>
             <td>
-                <select name="tableDropdown" selected="">
+                <select name="entity" selected="" onchange="setAttributes(this)">
                     <option value=""/>
-                    <option value="Donation">Donation</option>
-                    <option value="Member">Member</option>
-                    <option value="Project">Project</option>
-                    <option value="Part">Part</option>
-                    <option value="Purchase">Purchase</option>
-                    <option value="Subteam">Subteam</option>
+                    <option value="donation">Donation</option>
+                    <option value="member">Member</option>
+                    <option value="project">Project</option>
+                    <option value="part">Part</option>
+                    <option value="purchase">Purchase</option>
+                    <option value="subteam">Subteam</option>
+                    <option value="membership">Membership</option>
+                    <option value="working_on">Working On</option>
+                    <option value="rent">Rent</option>
+                    <option value="uses">Uses</option>
+                    <option value="requires">Requires</option>
+                    <option value="receives">Receives</option>
                 </select>
             </td>
         </tr>
         <tr>
             <td>Order by:</td>
             <td>
-                <select name="attributeDropdown" selected="">
-                    <option value=""/>
-                </select>
             </td>
             <td>
                 <select name="orderByDropdown" selected="=">
