@@ -19,7 +19,7 @@ VALUES
 ?>
 <?php
 
-    $result = @mysql_query("SELECT * FROM ".$_POST["entity"], $mydb);
+    $result = @mysql_query("SELECT * FROM purchase", $mydb);
     
     if ($result)
     {
