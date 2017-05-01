@@ -1,7 +1,0 @@
-<?php
-$mydb=@mysql_connect("localhost", "beekmanpc", "900553979","DBS17T-9"); 
-if( !$mydb) 
-{ 
-    echo( "Connection to database server failed <br>"); 
-    exit( ); 
-}

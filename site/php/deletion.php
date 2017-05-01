@@ -8,7 +8,7 @@
 <body>
 <table>
 <?php
-include("../access.txt");
+include("access.txt");
 mysql_select_db("DBS17T-9",$mydb);
 
 $table = $_POST[table];
