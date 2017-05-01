@@ -9,16 +9,16 @@
 <table>
 <?php
     include("access.txt");
-    mysql_query("INSERT INTO subteam(teamName, joinDate, parentTeam, bannerID, purpose, leaderID)
+    mysql_query("INSERT INTO subteam(teamName, parentTeam, purpose, leaderID)
 VALUES
-('$_POST[teamName]','$_POST[joinDate]','$_POST[parentTeam]','$_POST[bannerID]','$_POST[purpose]','$_POST[leaderID]')",$mydb);
+('$_POST[teamName]','$_POST[parentTeam]','$_POST[purpose]','$_POST[leaderID]')",$mydb);
     if (!$insert)
     {
         die("ERROR_CODE_110: IMPROPER INSERT QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
     }
 ?>
 <?php
-    $result = @mysql_query("SELECT * FROM ".$_POST["entity"], $mydb);
+    $result = @mysql_query("SELECT * FROM subteam", $mydb);
     
     if ($result)
     {
