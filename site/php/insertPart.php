@@ -8,7 +8,7 @@
 <body>
 <table>
 <?php
-    include("accessTest.txt");
+    include("access.txt");
     mysql_select_db("DBS17T-9", $mydb);
     $insert = mysql_query("INSERT INTO part(partNumber,category,donationID,partName,partLocation,quantity,partManufacturer)
 VALUES
