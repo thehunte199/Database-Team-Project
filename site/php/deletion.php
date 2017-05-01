@@ -16,14 +16,14 @@ $dkey = $_POST[dkey];
 $operator = $_POST[op];
 $value = $_POST[value];
 
-$sql="DELETE FROM " . $_POST[table] . " WHERE " . $_POST[dkey] . "" . $_POST[compOperator] . "" . $_POST[condition];
+$sql="DELETE FROM " . $_POST["entity"] . " WHERE " . $_POST["attribute"] . "" . $_POST[compOperator] . "" . $_POST[condition] . "";
 
 if (!mysql_query($sql,$mydb))
  {
  die('Error: ' . mysql_error());
  }
 
-$result = @mysql_query("SELECT * FROM ".$_POST[table], $mydb);
+$result = @mysql_query("SELECT * FROM ".$_POST["entity"], $mydb);
  
      if ($result)
      {

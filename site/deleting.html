@@ -5,6 +5,60 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0    ">
         <link rel="stylesheet" href="css/page.css">
 
+<script>
+    window.onload = function()
+    {
+        var select = document.createElement("select");
+        select.setAttribute("name", "attribute");
+        document.getElementById("formTable").rows[1].cells[1].appendChild(select);
+    };
+
+    var donation = ["donationID", "donationType", "receivedDate", "amount", "donatedFrom", "reason"];
+
+    var member = ["bannerID", "memFName", "memMName", "memLName", "memPhoneNum", "memCollege", "memMajor","memClass", "shirtSize", "memberStatus"];
+
+    var purchase = ["purchaseID", "orderDate", "arrivalStatus", "arrivalDate", "purchaseType", "quantityRequired", "quantityOrdered", "unitPrice", "puchasePriority", "orderDescription", "purchasedFrom", "orderName", "subteamName", "partNumber"];
+
+    var subteam = ["teamName", "parentTeam", "purpose", "joinDate", "bannerID", "leaderID"];
+
+    var project = ["projectName", "startDate", "dueDate", "completedDate", "projDesc", "projPriority", "subteamName", "assignDate", "leaderID",];
+
+    var part =["partNumber", "partName", "quantity", "category", "partLocation", "partManufacturer", "donationID"];
+
+    setAttributes = function(entity)
+    {
+        var select = document.createElement("select");
+        select.setAttribute("name", "attribute");
+
+        var table = document.getElementById("formTable");
+        table.rows[1].deleteCell(1);
+        table.rows[1].insertCell(1);
+        table.rows[1].cells[1].appendChild(select);
+
+        for(i = 0; i < select.length; ++i)
+            select.remove(i);
+
+        var tableType;
+
+        switch(entity.value)
+        {
+            case "member": tableType = member; break;
+            case "purchase": tableType = purchase; break;
+            case "donation": tableType = donation; break;
+            case "subteam": tableType = subteam; break;
+            case "project": tableType = project; break;
+            case "part": tableType = part; break;
+        }
+
+        for(i = 0; i < tableType.length; i++)
+        {
+            var option = document.createElement("option");
+            option.setAttribute('value', tableType[i]);
+            option.appendChild(document.createTextNode(tableType[i]));
+            select.add(option);
+        }
+    }
+</script>
 
     </head>
 <body>
@@ -12,11 +66,12 @@
   <main>
       <form id="deleteForm" action="php/deletion.php" method="post">
       <fieldset><legend>Delete</legend>
-  <table>
+  <table id="formTable">
     <tr>
       <td>Choose a table:</td>
       <td>
-        <select name='table' onchange="tableSelected(this)">
+        <select name='entity' onchange="setAttributes(this, 'attribute')">
+            <option value="none"></option>
             <option name="table" id="selection" value="member">Member</option>
             <option name="table" id="selection" value="donation">Donation</option>
             <option name="table" id="selection" value="part">Part</option>
@@ -29,7 +84,6 @@
     <tr>
       <td>Where:</td>
       <td>
-          <input type="text" id='dkey' name='dkey' value="bannerID"/>
       </td>
       <td>
         <select name="compOperator" id="op" selected="=">
@@ -53,44 +107,3 @@
 </main>
 </body>
 </html>
-
-
-<script>
-function tableSelected(select) {
-switch(select.value) {
-    case 'member':
-        document.getElementById('dkey').value = 'bannerID';
-        break;
-    case 'donation':
-        document.getElementById('dkey').value = 'donationID';
-        break;
-    case 'part':
-        document.getElementById('dkey').value = 'partNumber';
-        break;
-    case 'project':
-        document.getElementById('dkey').value = 'Pname';
-        break;
-    case 'purchase':
-        document.getElementById('dkey').value = 'purchaseID';
-        break;
-    case 'receives':
-        document.getElementById('dkey').value = '';
-        break;
-    case 'rent':
-        document.getElementById('dkey').value = '';
-        break;
-    case 'requires':
-        document.getElementById('dkey').value = '';
-        break;
-    case 'subteam':
-        document.getElementById('dkey').value = 'STname';
-        break;
-    case 'uses':
-        document.getElementById('dkey').value = '';
-        break;
-    case 'working_on':
-        document.getElementById('dkey').value = '';
-        break;
-}
-}
-</script>

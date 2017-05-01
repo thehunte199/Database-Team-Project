@@ -8,8 +8,8 @@
 <body>
 <table>
 <?php
-    include("access.txt");
-    mysql_select_db("wardja2", $mydb);
+    include("../access.txt");
+    mysql_select_db("DBS17T-9", $mydb);
     $result = @mysql_query("UPDATE ". $_POST["tableDropdown"] . " SET " .$_POST["attributeDropdownSet"] . "=" .$_POST["updateValue"] . " WHERE " .$_POST["attributeDropdownWhere"] . " ".$_POST["compOperator"] ." " .$_POST["condition"], $mydb);
     
     if(!$result)
