@@ -19,7 +19,7 @@
 ?>
 <?php
 
-    $result = @mysql_query("SELECT * FROM ".$_POST["entity"], $mydb);
+    $result = @mysql_query("SELECT * FROM membership", $mydb);
     
     if ($result)
     {
