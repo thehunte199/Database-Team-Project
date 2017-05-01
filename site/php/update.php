@@ -9,15 +9,13 @@
 <table>
 <?php
     include("access.txt");
-    mysql_select_db("DBS17T-9", $mydb);
-    $result = @mysql_query("UPDATE ". $_POST["tableDropdown"] . " SET " .$_POST["attributeDropdownSet"] . "=" .$_POST["updateValue"] . " WHERE " .$_POST["attributeDropdownWhere"] . " ".$_POST["compOperator"] ." " .$_POST["condition"], $mydb);
+    $result = @mysql_query("UPDATE ".$_POST["tableDropdown"] . " SET " .$_POST["attributeDropdownSet"] . "='" .$_POST['updateValue'] . "' WHERE " .$_POST["attributeDropdownWhere"] . "".$_POST["compOperator"] ."'" .$_POST['condition']."'", $mydb);
     
     if(!$result)
     {
         die("ERROR_CODE_110: IMPROPER UPDATE QUERY('Certain information entered may not be compatible with the data type of that field. Please re-enter the information.)" . mysql_error());
     }
 
-    mysql_free_result($result);
 ?>
 <?php
     $result = @mysql_query("SELECT * FROM ".$_POST["tableDropdown"], $mydb);
