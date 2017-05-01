@@ -9,7 +9,6 @@
 <table>
 <?php
     include("access.txt");
-    mysql_select_db("DBS17T-9", $mydb);
     $insert = mysql_query("INSERT INTO membership(bannerID, subteamName, joinDate)
         VALUES
         ('$_POST[bannerID]','$_POST[subteamName]','$_POST[joinDate]')",$mydb);

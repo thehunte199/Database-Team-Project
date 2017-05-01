@@ -9,7 +9,6 @@
 <table>
 <?php
     include("access.txt");
-    mysql_select_db("DBS17T-9", $mydb);
     $insert = mysql_query("INSERT INTO donation(donationID,amount,donationType,donatedFrom,dateReceived,reason)
         VALUES
         ('$_POST[donationID]','$_POST[amount]','$_POST[donationType]','$_POST[donatedFrom]','$_POST[dateReceived]','$_POST[reason]')",$mydb);

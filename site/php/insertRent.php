@@ -9,7 +9,6 @@
 <table>
 <?php
     include("access.txt");
-    mysql_select_db("DBS17T-9", $mydb);
     mysql_query("INSERT INTO rent(bannerID, partNumber, rentDate)
         VALUES
         ('$_POST[bannerID]','$_POST[partNumber]','$_POST[rentDate]')",$mydb);
