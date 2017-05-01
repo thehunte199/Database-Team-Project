@@ -9,7 +9,6 @@
 <table>
 <?php
     include("access.txt");
-    mysql_select_db("DBS17T-9", $mydb);
     $result = @mysql_query("SELECT * FROM ".$_POST["entity"] . " ORDER BY " . $_POST["attribute"] . " " .$_POST["orderByDropdown"], $mydb);
     
     if ($result)
