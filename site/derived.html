@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/page.css">
+        <script>
+        function openTable(evt, tableName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tableName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        </script>
+    </head>
+<body>
+<main>
+<div class="tab">
+    <button class="tablinks" onclick="openTable(event, 'Finance')" id="defaultTab">Finance</button>
+    <button class="tablinks" onclick="openTable(event, 'Project')">Project</button>
+    <button class="tablinks" onclick="openTable(event, 'Subteam')">Subteam</button>
+</div>
+<div id="Finance" class="tabcontent">
+    <form id="unitPrice" action="php/unitPrice.php" method="POST"></form>
+    <form id="totalCostPart" action="php/totalCostPart.php" method="POST"></form>
+    <form id="totalCostAll" action="php/totalCostAll.php" method="POST"></form>
+    <table>
+        <tr>
+            <td><input type="submit" form="unitPrice" formtarget="viewIframe" value="Unit Price"/></td>
+            <td/>
+            <td>Displays all of the parts with their unit prices.</td>
+        </tr>
+        <tr>
+            <td><input type="submit" form="totalCostPart" formtarget="viewIframe" value="Total Part Cost"/></td>
+            <td/>
+            <td>Displays the total amount of money spent on each part.</td>
+        </tr>
+        <tr>
+            <td><input type="submit" form="totalCostAll" formtarget="viewIframe" value="Total Part All"/></td>
+            <td/>
+            <td>Displays the total cost spent on all parts together.</td>
+        </tr>
+        <tr>
+        </tr>
+    </table>
+</div>
+<div id="Project" class="tabcontent">
+    <form id="partsUsed" action="php/partsUsed.php" method="POST"></form>
+    <form id="projectMembers" action="php/projectMembers.php" method="POST"></form>
+    <form id="projectLeaders" action="php/projectLeaders.php" method="POST"></form>
+    <table>
+        <tr>
+            <td><input type="submit" form="partsUsed" formtarget="viewIframe" value="Parts Used"/></td>
+            <td/>
+            <td>Displays all the parts used by each project.</td>
+        </tr>
+        <tr>
+            <td><input type="submit" form="projectMembers" formtarget="viewIframe" value="Members"/></td>
+            <td/>
+            <td>Displays all members working on each project.</td>
+        </tr>
+        <tr>
+            <td><input type="submit" form="projectLeaders" formtarget="viewIframe" value="Leaders"/></td>
+            <td/>
+            <td>Displays the leader of each project.</td>
+        </tr>
+    </table>
+</div>
+<div id="Subteam" class="tabcontent">
+    <form id="subteamProjects" action="php/subteamProjects.php" method="POST"></form>
+    <form id="subteamMembers" action="php/subteamMembers.php" method="POST"></form>
+    <form id="subteamLeaders" action="php/subteamLeaders.php" method="POST"></form>
+    <table>
+        <tr>
+            <td><input type="submit" form="subteamProjects" formtarget="viewIframe" value="Projects"/></td>
+            <td/>
+            <td>Displays all of the projects being worked on by each subteam.</td>
+        </tr>
+        <tr>
+            <td><input type="submit" form="subteamMembers" formtarget="viewIframe" value="Members"/></td>
+            <td/>
+            <td>Displays all of the members working on each subteam.</td>
+        </tr>
+        <tr>
+            <td><input type="submit" form="subteamLeaders" formtarget="viewIframe" value="Leaders"/></td>
+            <td/>
+            <td>Displays the leader of each subteam.</td>
+        </tr>
+    </table>
+</div>
+<script>
+    document.getElementById("defaultTab").click();
+</script>
+<iframe src="" name="viewIframe"/>
+</main>
+</body>
+</html>
