@@ -16,7 +16,7 @@ if (!mysql_query($sql,$mydb))
  }
 
 $result = @mysql_query("SELECT SUM(unitPrice * quantityOrdered)
-                        FROM purchase;", $mydb);
+                        FROM purchase", $mydb);
  
      if ($result)
      {
