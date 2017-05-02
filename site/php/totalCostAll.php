@@ -15,9 +15,8 @@ if (!mysql_query($sql,$mydb))
  die('Error: ' . mysql_error());
  }
 
-$result = @mysql_query("SELECT unitPrice
-                        FROM part
-                        WHERE partNumber = " . $_POST["partNum1"], $mydb);
+$result = @mysql_query("SELECT SUM(unitPrice * quantityOrdered)
+                        FROM purchase;", $mydb);
  
      if ($result)
      {
